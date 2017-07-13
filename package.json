@@ -1,4 +1,29 @@
 {
-  "name": "",
-  "version": ""
+		"name": "verstka",
+		"version": "1.0.0",
+		"description": "simple verstka",
+		"main": "index.js",
+		"scripts": {
+				"gulp": "gulp pug"
+		},
+		"author": "Pasha School",
+		"license": "ISC",
+		"dependencies": {
+				"autoprefixer": "^7.1.2",
+				"browser-sync": "^2.18.12",
+				"cssnano": "^3.10.0",
+				"gulp": "^3.9.1",
+				"gulp-concat": "^2.6.1",
+				"gulp-if": "^2.0.2",
+				"gulp-imagemin": "^3.3.0",
+				"gulp-notify": "^3.0.0",
+				"gulp-postcss": "^7.0.0",
+				"gulp-pug": "^3.3.0",
+				"gulp-rename": "^1.2.2",
+				"gulp-sass": "^3.1.0",
+				"gulp-sourcemaps": "^2.6.0",
+				"gulp-uglify": "^3.0.0",
+				"gulp-useref": "^3.1.2",
+				"useref": "^1.2.0"
+		}
 }

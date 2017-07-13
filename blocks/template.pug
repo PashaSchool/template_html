@@ -1,0 +1,13 @@
+include _assets/bemto/bemto
+- set_bemto_settings({ modifier: "--" })
+
+include head/head
+
+doctype html
+html(lang='en')
+	head
+		+head({
+			"title": "test title"
+		})
+	body
+		p hello from body
