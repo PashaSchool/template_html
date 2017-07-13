@@ -43,9 +43,10 @@ gulp.task('pug', function() {
 		this.emit('end');
 	})
 	.pipe(gulp.dest(path.devDir))
+	.pipe(browserSync.stream())
 });
 
-// .pipe(browserSync.stream())
+
 // style
 gulp.task('sass', function() {
 	var propc = [autoprefixer({browsers: ['last 10 versions']}), cssnano];
@@ -114,7 +115,7 @@ gulp.task('imgbuild', ['clean'], function() {
 });
 
 //development
-gulp.task('default', ['rs', 'watch', 'pug', 'sass', 'script']);
+gulp.task('default', ['browser-sync','watch', 'pug', 'sass', 'script']);
 
 
 //production

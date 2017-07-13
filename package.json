@@ -4,7 +4,7 @@
 		"description": "simple verstka",
 		"main": "index.js",
 		"scripts": {
-				"gulp": "gulp pug"
+				"gulp": "gulp"
 		},
 		"author": "Pasha School",
 		"license": "ISC",

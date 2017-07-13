@@ -2,6 +2,7 @@ include _assets/bemto/bemto
 - set_bemto_settings({ modifier: "--" })
 
 include head/head
+include header/header
 
 doctype html
 html(lang='en')
@@ -10,4 +11,11 @@ html(lang='en')
 			"title": "test title"
 		})
 	body
-		p hello from body
+		block header
+			+header()
+		
+		block scriptVendor
+			script( src="libs/jquery/dist/jquery.min.js")
+		block script
+			script( src="js/main.js")
+			
