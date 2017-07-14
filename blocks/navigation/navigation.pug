@@ -1,12 +1,21 @@
 mixin navigation(data)
   +b.NAV.navigation
-    +b.DIV.left-nav
+    +b.DIV.header-line
+      +b.DIV.logo-container(class='show-on-mobile')
+        +e.DIV.mobile-logo mobile logo
+      +b.DIB.burger-container
+        +b.DIV.burger-menu
+          +e.SPAN.dash
       +e.UL.list
-        +e.LI.item=data.services
-        +e.LI.item=data.works
-    +b.DIV.logo-container
-      +e.DIV.logo
-    +b.DIV.right-nav
-      +e.UL.list
-        +e.LI.item=data.about
-        +e.LI.item=data.contacts
+        +e.LI.item
+          a(href='#')=data.services
+        +e.LI.item
+          a(href='#')=data.works
+        +e.LI.item-logo(class='hide-on-mobile')
+          +e.DIV.logo-img
+        +e.LI.item
+          a(href='#')=data.about
+        +e.LI.item
+          a(href='#')=data.contacts
+      
+    

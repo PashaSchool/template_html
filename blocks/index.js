@@ -19,4 +19,7 @@ $(document).ready(function() {
 
   // initialization
   setHeight.init();
+
+  //navigation action
+  navigationAction.init();
 })

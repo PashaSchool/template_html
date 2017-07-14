@@ -20,6 +20,8 @@ const postcss = require('gulp-postcss');
 const rucksack = require('rucksack-css');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const fontMag = require('postcss-font-magician');
+// const assets  = require('postcss-assets');
 /***********************************************
         browser-sync
 ***********************************************/
@@ -44,20 +46,25 @@ gulp.task('pug', function() {
 	.pipe(browserSync.stream())
 });
 
-// style
+// style 		cssnano, ,
+//
 gulp.task('scss', function() {
-	var propc = [autoprefixer({browsers: ['last 10 versions']}), rucksack, cssnano];
+	var propc = [
+		autoprefixer({browsers: ['last 10 versions']}),
+		rucksack,
+		fontMag,
+		cssnano
+	];
 	return gulp.src(path.blocks + '*.scss')
 	.pipe(sourcemap.init())
 	.pipe(sass())
 	.on('error', function(err) {
 		notify().write(err)
-		this.emit('end');
-	})
-    .pipe(postcss(propc))
-    .pipe(rename({suffix : ".min"}))
-    .pipe(gulp.dest(path.devDir + 'css/'))
-    .pipe(browserSync.stream())
+		this.emit('end');})
+  .pipe(postcss(propc))
+  .pipe(rename({suffix : ".min"}))
+  .pipe(gulp.dest(path.devDir + 'css/'))
+  .pipe(browserSync.stream())
 });
 
 //scripts
@@ -79,7 +86,7 @@ gulp.task('watch', function(){
 //server
 gulp.task('browser-sync', function() {
 	browserSync.init({
-		port: 3000,
+		port: 3009,
 		server: {
 			baseDir: path.devDir
 		}

@@ -5,8 +5,31 @@ $green: #4B4D38;
 $silver: #988574;
 $gold: #E1BE7A;
 
-
 $font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-sarif;
 
+//breakpoints
+$breakpoints: (
+  'small'  : ( min-width:  767px ),
+  'medium' : ( min-width:  992px ),
+  'large'  : ( min-width: 1200px )
+);
 
-// $breakpoints: (small: ( min-width:  767px ), medium: ( min-width:  992px ), large: ( min-width: 1200px ))
+
+//extends
+%space-btw-c-y {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+%space-ard-c-y {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+%align-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

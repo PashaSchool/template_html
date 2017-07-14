@@ -1,30 +1,123 @@
 .navigation {
-  display: flex;
   padding: 0 3rem;
 }
 
-.left-nav{
-  color: orange;
+.header-line{
+  @extend %space-btw-c-y;
+  position: relative;
+  height: 4rem;
+  // flex-flow: row wrap;
+  background-color: tomato;
+  @include breakpoint('small') {
+    display: block;
+    height: 100px;
 
-  @include respond-to('small') {
-    color: red
   }
-  @include respond-to('medium') {
-    color: blue
-  }
-  @include respond-to('large') {
-    color: white
+  &__list {
+    display: none;
+
+    @include breakpoint('small') {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
-  &__list{}
-  &__item{}
- }
+  &__item {
+    margin: 0;
+    @include breakpoint('small') {
+      margin: 0 1rem;
+    }
+    a {
+      display: block;
+      background-color: orange;
+      text-align: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid $black;
+      @include breakpoint('small') {
+        border-bottom: none;
+      }
+      transition: background-color .3s ease-in;
+      &:active {
+        background-color: silver;
+      }
+    }
+  }
+  &__item-logo {
+    flex-grow: 1;
+  }//__item logo
+  &__logo-img {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background-color: violet;
+  }
+}
+.toggle-nav-on-mobile {
+  background-color: lightgreen;
 
-.right-nav{
-  &__list{}
-  &__item{}
+  flex-flow: column wrap;
+  display: flex;
+  width: 100%;
+
+  position: absolute;
+  top: 4rem;
 }
 
-.logo-container{
-  &__logo{}
+//show for modile
+.show-on-mobile {
+  background-color: red;
+  display: block;
+  @include breakpoint('small') {
+    background-color: silver;
+    display: none;
+  }
+}
+.hide-on-mobile{
+  display: none;
+  @include breakpoint('small') {
+    display: block;
+  }
+}
+
+.logo-container {
+  // width: 50%;
+  &__mobile-logo {
+
+  }
+}
+// burger menu style
+.burger-container {
+  // width: 50%;
+  // background-color: pink;
+  // justify-content: flex-end;
+  // display: flex;
+}
+.burger-menu {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: $black;
+  @extend %align-middle;
+
+  @include breakpoint('small') {
+    display: none;
+  }
+  &__dash, &:after, &:before {
+    width: 40px;
+    height: 5px;
+    background-color: $white;
+    display: block;
+    position: relative;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    margin-top: -12px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    margin-top: 12px;
+  }
 }

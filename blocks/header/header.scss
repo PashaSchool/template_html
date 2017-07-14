@@ -1,3 +1,7 @@
 .w-height{
-  background-color: $gold
+  background-color: $gold;
+
+  @include breakpoint('small') {
+    background-color: $green;
+  }
 }
