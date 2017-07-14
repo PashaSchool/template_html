@@ -1,0 +1,30 @@
+.navigation {
+  display: flex;
+  padding: 0 3rem;
+}
+
+.left-nav{
+  color: orange;
+
+  @include respond-to('small') {
+    color: red
+  }
+  @include respond-to('medium') {
+    color: blue
+  }
+  @include respond-to('large') {
+    color: white
+  }
+
+  &__list{}
+  &__item{}
+ }
+
+.right-nav{
+  &__list{}
+  &__item{}
+}
+
+.logo-container{
+  &__logo{}
+}

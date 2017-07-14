@@ -1,0 +1,12 @@
+mixin navigation(data)
+  +b.NAV.navigation
+    +b.DIV.left-nav
+      +e.UL.list
+        +e.LI.item=data.services
+        +e.LI.item=data.works
+    +b.DIV.logo-container
+      +e.DIV.logo
+    +b.DIV.right-nav
+      +e.UL.list
+        +e.LI.item=data.about
+        +e.LI.item=data.contacts

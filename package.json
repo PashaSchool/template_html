@@ -24,6 +24,7 @@
 				"gulp-sourcemaps": "^2.6.0",
 				"gulp-uglify": "^3.0.0",
 				"gulp-useref": "^3.1.2",
+				"rucksack-css": "^0.9.1",
 				"useref": "^1.2.0"
 		}
 }

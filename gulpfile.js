@@ -8,18 +8,16 @@ const sourcemap = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 const rimraf  = require('rimraf');
-
 /***********************************************
         utilis
 ***********************************************/
 const useref  = require('gulp-useref');
 const gulpif  = require('gulp-if');
-
 /***********************************************
         postcss plugins
 ***********************************************/
 const postcss = require('gulp-postcss');
-// const rucksack = require('rucksack-css');
+const rucksack = require('rucksack-css');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 /***********************************************
@@ -46,11 +44,10 @@ gulp.task('pug', function() {
 	.pipe(browserSync.stream())
 });
 
-
 // style
-gulp.task('sass', function() {
-	var propc = [autoprefixer({browsers: ['last 10 versions']}), cssnano];
-	return gulp.src(path.blocks + '*.sass')
+gulp.task('scss', function() {
+	var propc = [autoprefixer({browsers: ['last 10 versions']}), rucksack, cssnano];
+	return gulp.src(path.blocks + '*.scss')
 	.pipe(sourcemap.init())
 	.pipe(sass())
 	.on('error', function(err) {
@@ -63,19 +60,18 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream())
 });
 
-
 //scripts
 gulp.task('script', function() {
 	return gulp.src([path.blocks + '**/*.js', '!' + path.blocks + "_assets/**/*.js"])
 	.pipe(concat('main.js'))
 	.pipe(gulp.dest(path.devDir + 'js/'))
-    .pipe(browserSync.stream())
+	.pipe(browserSync.stream())
 });
 
 //watch
 gulp.task('watch', function(){
 	gulp.watch(path.blocks + '**/*.pug', ['pug'])
-	gulp.watch(path.blocks + '**/*.sass', ['sass'])
+	gulp.watch(path.blocks + '**/*.scss', ['scss'])
 	gulp.watch(path.blocks + '**/*.js', ['script'])
 });
 
@@ -115,7 +111,7 @@ gulp.task('imgbuild', ['clean'], function() {
 });
 
 //development
-gulp.task('default', ['browser-sync','watch', 'pug', 'sass', 'script']);
+gulp.task('default', ['browser-sync', 'watch', 'pug', 'scss', 'script']);
 
 
 //production

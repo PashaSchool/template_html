@@ -3,6 +3,8 @@ include _assets/bemto/bemto
 
 include head/head
 include header/header
+include navigation/navigation
+include promo/promo
 
 doctype html
 html(lang='en')
@@ -13,6 +15,14 @@ html(lang='en')
 	body
 		block header
 			+header()
+				block headerContent
+					+navigation({
+						"services":"Services",
+						"works":"Works",
+						"about":"About",
+						"contacts":"Contacts",
+					})
+					+promo()
 		
 		block scriptVendor
 			script( src="libs/jquery/dist/jquery.min.js")
