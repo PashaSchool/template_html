@@ -6,6 +6,7 @@ include header/header
 include navigation/navigation
 include promo/promo
 include circleService/circleService
+include portfolio/portfolio
 
 doctype html
 html(lang='en')
@@ -29,6 +30,7 @@ html(lang='en')
 					})
 				block serviceSection
 					+circleService()
+					+portfolio()
 		
 		block scriptVendor
 			script( src="libs/jquery/dist/jquery.min.js")

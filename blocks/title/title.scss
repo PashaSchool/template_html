@@ -1,0 +1,10 @@
+.top-header {
+  background-color: silver;
+  display: block;
+  text-align: center;
+  line-height: 1.2;
+  padding: 1rem 0;
+  &__title {
+    @extend %responsive-font-title;
+  }
+}

@@ -10,8 +10,6 @@
   }
 }
 
-
-
 @mixin distribute-on-circle(
   $nb-items,
   $circle-size,
@@ -34,28 +32,104 @@
     position: absolute;
     top:  50%;
     left: 50%;
-    width:  $item-size;
-    height: $item-size;
     margin: -$half-item;
+
   }
 
   $angle: (360 / $nb-items);
   $rot: 0;
 
   @for $i from 1 through $nb-items {
-    @if not $class-for-IE {
+    > :nth-of-type(#{$i}) {
+      transform: rotate($rot * 1deg)
+      translate($half-parent)
+      rotate($rot * -1deg)
+
+    }
+    @if $i == 3 {
       > :nth-of-type(#{$i}) {
-        transform: rotate($rot * 1deg) translate($half-parent) rotate($rot * -1deg);
+        // display: none;
+        transform:
+        rotate($rot * 1deg)
+        translate($half-parent)
+        rotate($rot * -1deg)
+        translate(-$half-parent + 50);
       }
-    } @else {
-      > .#{$class-for-IE}#{$i} {
-        // If CSS transforms are not supported
-        $mt: sin($rot * pi() / 180) * $half-parent - $half-item;
-        $ml: cos($rot * pi() / 180) * $half-parent - $half-item;
-        margin: $mt 0 0 $ml;
+    }
+    @if $i == 4 {
+      > :nth-of-type(#{$i}) {
+        transform:
+        rotate($rot * 1deg)
+        translate($half-parent)
+        rotate($rot * -1deg)
+        translate(-$half-parent + 50);
+      }
+    }
+    @if $i == 5 {
+      > :nth-of-type(#{$i}) {
+        transform:
+        rotate($rot * 1deg)
+        translate($half-parent)
+        rotate($rot * -1deg)
+        translate(-$half-parent + 50);
       }
     }
 
+
     $rot: ($rot + $angle);
   }
+}
+
+
+@mixin big-circle-f($p-height, $bdc) {
+  width: $p-height;
+  height: $p-height;
+  margin-top: -($p-height / 2);
+  margin-left: -($p-height / 2);
+  border: 1px solid $bdc;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+@mixin midl-circle-f($p-height, $bdc) {
+  width: $p-height;
+  height: $p-height;
+  margin-top: -($p-height / 2);
+  margin-left: -($p-height / 2);
+
+  border-right: 1px solid $bdc;
+  border-left: 1px solid $bdc;
+  border-bottom: 1px solid  $bdc;
+  border-radius: 50%;
+  z-index: -1;
+
+  border-top: 1px solid transparent;
+}
+
+@mixin xs-circle-half($p-height, $bdc) {
+  width: $p-height;
+  height: $p-height;
+  margin-top: -($p-height / 2);
+  margin-left: -($p-height / 2);
+
+  border-right: 1px solid $bdc;
+  border-left: 1px solid $bdc;
+  border-top: 1px solid  $bdc;
+  border-radius: 50%;
+
+  border-bottom: 1px solid transparent;
+}
+
+@mixin xxs-circle-half($p-height, $bdc) {
+  width: $p-height;
+  height: $p-height;
+  margin-top: -($p-height / 2);
+  margin-left: -($p-height / 2);
+
+  border-bottom: 1px solid $bdc;
+  border-top: 1px solid transparent;
+  border-radius: 50%;
+
+  border-left: 1px solid  transparent;
+  border-right: 1px solid transparent;
 }

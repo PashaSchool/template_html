@@ -1,0 +1,20 @@
+include ../title/title
+
+mixin portfolioItem() 
+  +e.LI.works
+    +e.DIV.works-wrapper
+      +b.work-shell
+        +b.work-container
+          span PORFOLIO
+mixin portfolio()
+  +title("Our recent works")
+  +b.SECTION.portfolio-container
+    +b.UL.portfolio-list
+      +portfolioItem()
+      +portfolioItem()
+      +portfolioItem()
+      +portfolioItem()
+      +portfolioItem()
+      +portfolioItem()
+      +portfolioItem()
+      +portfolioItem()

@@ -1,4 +1,5 @@
 include ../title/title
+include ../button/button
 
 mixin item(data) 
   +e.LI.item
@@ -9,17 +10,17 @@ mixin item(data)
           path(d='M21 8V7l-3 2-3-2v1l3 2 3-2zm1-5H2C.9 3 0 3.9 0 5v14c0 1.1.9 2 2 2h20c1.1 0 1.99-.9 1.99-2L24 5c0-1.1-.9-2-2-2zM8 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H2v-1c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1zm8-6h-8V6h8v6z')
           path(d='M0 0h24v24H0z', fill='none')
       +e.info
-        +e.title=data.title
-        +e.desc=data.desc
+        +e.title(class=data.modefire)=data.title
+        +e.desc(class=data.modefire)=data.desc
       
 mixin circleService()
-  div.h div service circle is here
+  +b.SECTION.container
     +title('Service work')
     +b.UL.circle-container
       +item({
         "icon": "icon",
         "title": "discovery 1",
-        "desc": "lorem Ipsum proin gravida nibh vel velit auctor aliquet."
+        "desc": "lorem Ipsum proin gravida nibh vel velit auctor aliquet.",
       })
       
       +item({
@@ -51,8 +52,12 @@ mixin circleService()
         "title": "discovery 6",
         "desc": "lorem Ipsum proin gravida nibh vel velit auctor aliquet."
       })
-      //- +e.LI.item.--general-picture
-      //-   span general picture
-        
+      +e.LI.item.--general-picture
+      +e.LI.generate-circle-1
+      +e.LI.generate-circle-2
+      +e.LI.generate-circle-3
+      +e.LI.generate-circle-4
+  +b.DIV.btn-wrapper     
+    +button('hire us')
     
       
