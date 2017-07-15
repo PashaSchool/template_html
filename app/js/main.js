@@ -43,7 +43,7 @@ var navigationAction = {
   },
   checkForMobileDevice: function() {
     this.windowWidth = $(window).innerWidth();
-    if( $(this.menu).hasClass(this.newClass) && (this.windowWidth >= 767)) {
+    if( $(this.menu).hasClass(this.newClass) && (this.windowWidth >= 979)) {
       $(this.menu).removeClass(this.newClass);
     }
   },
@@ -51,7 +51,7 @@ var navigationAction = {
     $(this.menu).toggleClass(this.toggleClassCb.bind(this))
   },
   toggleClassCb: function() {
-    if(this.windowWidth <= 767) {
+    if(this.windowWidth <= 979) {
       return this.newClass
     } else {
       return

@@ -1,7 +1,30 @@
 .w-height{
   background-color: $gold;
-
+  position: relative;
   @include breakpoint('small') {
     background-color: $green;
+  }
+}
+
+.scroll-pointer-box {
+  width: 50px;
+  height: 50px;
+  background-color: violet;
+  position: absolute;
+  bottom: 0;
+  @include breakpoint('small') {
+    bottom: 30px;
+  }
+  left: 50%;
+  margin-left: -25px;
+  &__arrow {
+    @extend  %align-middle;
+    height: 100%;
+    .svg-arrow {
+      display: block;
+      height: 55px;
+      height: 55px;
+      fill: #000000;
+    }
   }
 }

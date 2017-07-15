@@ -46,8 +46,7 @@ gulp.task('pug', function() {
 	.pipe(browserSync.stream())
 });
 
-// style 		cssnano, ,
-//
+// style
 gulp.task('scss', function() {
 	var propc = [
 		autoprefixer({browsers: ['last 10 versions']}),
@@ -86,7 +85,7 @@ gulp.task('watch', function(){
 //server
 gulp.task('browser-sync', function() {
 	browserSync.init({
-		port: 3009,
+		port: 3007,
 		server: {
 			baseDir: path.devDir
 		}

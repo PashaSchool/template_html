@@ -1,5 +1,11 @@
 include ../button/button
 
-mixin promo()
+mixin promo(data)
   +b.DIV.intro-wrapper
-    +button("about us")
+    +b.DIV.intro-box
+      +e.SPAN.title=data.title
+      +e.SPAN.short-descr=data.descr
+      +e.DIV.btn-wrapper
+        +button("about us")
+  if block
+    block

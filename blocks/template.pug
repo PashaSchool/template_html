@@ -5,6 +5,7 @@ include head/head
 include header/header
 include navigation/navigation
 include promo/promo
+include circleService/circleService
 
 doctype html
 html(lang='en')
@@ -22,7 +23,12 @@ html(lang='en')
 						"about":"About",
 						"contacts":"Contacts",
 					})
-					+promo()
+					+promo({
+						"title" : "Lorem ipsum curabitur quam urna fusce",
+						"descr" : "Lorem ipsum curabitur proin - orci massa eget commodo "
+					})
+				block serviceSection
+					+circleService()
 		
 		block scriptVendor
 			script( src="libs/jquery/dist/jquery.min.js")

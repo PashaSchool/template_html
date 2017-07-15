@@ -1,12 +1,12 @@
 .navigation {
   padding: 0 3rem;
+
 }
 
 .header-line{
   @extend %space-btw-c-y;
   position: relative;
   height: 4rem;
-  // flex-flow: row wrap;
   background-color: tomato;
   @include breakpoint('small') {
     display: block;
@@ -15,11 +15,15 @@
   }
   &__list {
     display: none;
-
+    position: relative;
     @include breakpoint('small') {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      height: 100%;
+    }
+    @include breakpoint('large') {
+      justify-content: space-between;
     }
   }
 
@@ -32,7 +36,7 @@
       display: block;
       background-color: orange;
       text-align: center;
-      padding: 1rem 0;
+      padding: 1rem .5rem;
       border-bottom: 1px solid $black;
       @include breakpoint('small') {
         border-bottom: none;
@@ -62,6 +66,7 @@
 
   position: absolute;
   top: 4rem;
+  z-index: 1000;
 }
 
 //show for modile
@@ -75,24 +80,19 @@
 }
 .hide-on-mobile{
   display: none;
-  @include breakpoint('small') {
+  @include breakpoint('large') {
     display: block;
   }
 }
 
 .logo-container {
-  // width: 50%;
+
   &__mobile-logo {
 
   }
 }
 // burger menu style
-.burger-container {
-  // width: 50%;
-  // background-color: pink;
-  // justify-content: flex-end;
-  // display: flex;
-}
+
 .burger-menu {
   position: relative;
   width: 50px;

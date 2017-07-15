@@ -6,11 +6,11 @@ $silver: #988574;
 $gold: #E1BE7A;
 
 $font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-sarif;
-
+  // 'medium' : ( min-width:  1200px ),
 //breakpoints
 $breakpoints: (
-  'small'  : ( min-width:  767px ),
-  'medium' : ( min-width:  992px ),
+  'mobile' : ( min-width: 767px),
+  'small'  : ( min-width:  979px ),
   'large'  : ( min-width: 1200px )
 );
 
@@ -22,8 +22,6 @@ $breakpoints: (
   align-items: center;
 }
 %space-ard-c-y {
-  display: -webkit-flex;
-  display: -ms-flex;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,4 +30,19 @@ $breakpoints: (
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+%responsive-font-title{
+  font-size: responsive 26px 56px;
+  font-range: 480px 992px;
+}
+
+%responsive-font-text{
+  font-size: responsive 14px 21px;
+  font-range: 480px 1280px;
+}
+
+%responsive-text-head {
+  font-size: responsive 21px 28px;
+  font-range: 480px 1280px;
 }
