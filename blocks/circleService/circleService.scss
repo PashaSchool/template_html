@@ -7,9 +7,7 @@
 .circle-container {
   display: flex;
   flex-flow: row wrap;
-  &:nth-child(3){
-    display: none;
-  }
+
   @include breakpoint('large') {
     @include distribute-on-circle(6, 600px, 50px, false);
     margin: 5rem auto;

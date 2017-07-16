@@ -80,6 +80,81 @@
   }
 }
 
+@mixin distribute-on-circle-about(
+  $nb-items,
+  $circle-size,
+  $item-size,
+  $class-for-IE: false
+) {
+  $half-item: ($item-size / 2);
+  $half-parent: ($circle-size / 2);
+
+  position: relative; /* 1 */
+  width:  $circle-size;
+  height: $circle-size;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none; /* 2 */
+  box-sizing: content-box; /* 3 */
+
+  > * { /* 4 */
+    display: block;
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    margin: -$half-item;
+
+  }
+
+  $angle: (220 / $nb-items);
+  $rot: 0;
+
+  @for $i from 1 through $nb-items {
+    > :nth-of-type(#{$i}) {
+      transform: rotate($rot * 1deg)
+      translate($half-parent)
+      rotate($rot * -1deg)
+    }
+
+    @if $i == 3 {
+      > :nth-of-type(#{$i}) {
+        transform:
+        rotate($rot * 1deg)
+        translate($half-parent)
+        rotate($rot * -1deg)
+        translate(-$half-parent / 5);
+      }
+    }
+    @if $i == 4 {
+      > :nth-of-type(#{$i}) {
+        transform:
+        rotate($rot * 1deg)
+        translate($half-parent)
+        rotate($rot * -1deg)
+        translate(-$half-parent / 3);
+      }
+    }
+    @if $i == 5 {
+      > :nth-of-type(#{$i}) {
+        transform:
+        rotate($rot * 1deg)
+        translate($half-parent)
+        rotate($rot * -1deg)
+        translate(-$half-parent / 3);
+      }
+    }
+
+
+    $rot: ($rot + $angle);
+  }
+}
+
+// transform:
+// rotate($rot * 1deg)
+// translate($half-parent)
+// rotate($rot * -1deg)
+// translate(-$half-parent + 50);
+
 
 @mixin big-circle-f($p-height, $bdc) {
   width: $p-height;

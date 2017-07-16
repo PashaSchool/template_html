@@ -1,0 +1,38 @@
+include ../title/title
+include ../circleService/circleService
+
+mixin aboutStudio()
+  +b.SECTION.about-studio-container
+    +title("about studio")
+    +b.DIV.about-studio-process
+      +b.DIV.about-studio-descr
+        +e.P.text
+          | Specialising in customer experiences & brand development, we combine digitalcraftsmanship with innovative thinking to deliver disruptive digital solutions on a worldwide scale.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugperspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem apet quasi architecto beatae vitae dicta sunt explicabo. 
+      +b.UL.circle-container-about
+        +item({
+          "title": "discovery 1",
+        })
+        
+        +item({
+          "title": "discovery 2",
+        })
+      
+        +item({
+          "title": "discovery 3",
+        })
+      
+        +item({
+          "title": "discovery 4",
+        })
+      
+        +item({
+          "title": "discovery 5",
+        })
+
+        +e.LI.item.--general-picture(class='hide-on-mobile')
+        +e.LI.generate-circle-1
+        +e.LI.generate-circle-2
+        +e.LI.generate-circle-3
+        +e.LI.generate-circle-4
+
+      

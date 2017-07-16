@@ -7,6 +7,8 @@ include navigation/navigation
 include promo/promo
 include circleService/circleService
 include portfolio/portfolio
+include aboutStudio/aboutStudio
+include contactUs/contactUs
 
 doctype html
 html(lang='en')
@@ -31,6 +33,9 @@ html(lang='en')
 				block serviceSection
 					+circleService()
 					+portfolio()
+					+aboutStudio()
+				block contactUs
+					+contactUs('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
 		
 		block scriptVendor
 			script( src="libs/jquery/dist/jquery.min.js")

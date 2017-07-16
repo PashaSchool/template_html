@@ -1,6 +1,6 @@
 .intro-wrapper {
   @extend %align-middle;
-
+  padding: 20px 0;
   position: relative;
   background-color: green;
     height: calc(100% - 4rem);
@@ -19,11 +19,11 @@
 
   @include breakpoint('small') {
     margin-top: -100px;
-    width: 50%;
+    width: 55%;
   }
 
   @include breakpoint('large') {
-    width: 35%;
+    width: 45%;
   }
   &__title{
     @extend %responsive-font-title;

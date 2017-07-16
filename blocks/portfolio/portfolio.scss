@@ -7,7 +7,9 @@
 .portfolio-list {
   display: flex;
   flex-flow: row wrap;
-
+  @include breakpoint('large') {
+    padding: 0 100px;
+  }
   &__works {
 
     margin: 10px;

@@ -1,0 +1,95 @@
+.about-studio-container {
+
+}
+.about-studio-process {
+  padding: 2rem 0 4rem;
+}
+.about-studio-descr {
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  // top: 150px;
+  background-color: #fff;
+  z-index: 2000;
+  &__text {
+    text-align: center;
+    @include breakpoint('mobile') {
+      width: 80%;
+    }
+    @include breakpoint('small') {
+
+    }
+    @include breakpoint('large') {
+      width: 50%;
+      max-width: 650px;
+    }
+  }
+}
+.circle-container-about {
+  display: flex;
+  flex-flow: row wrap;
+  .service-item-desc {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    &__icon {
+      width: 100%;
+    }
+    &__info {
+      width: 100%;
+    }
+  }
+  @include breakpoint('large') {
+    @include distribute-on-circle-about(5, 600px, 50px, false);
+    margin: -100px auto 5rem;
+    border: solid 1px #000;
+  }
+  &__item {
+    width: calc(100% - 4px);
+    @include breakpoint('mobile') {
+      width: calc(50% - 4px);
+      &--general-picture {
+
+      }
+    }
+
+    @include breakpoint('large') {
+      background-color: yellow;
+      width: 150px;
+    }
+    &--general-picture {
+      border: 1px solid #000;
+      height: 250px;
+      width: 100%;
+      order: -1;
+      @include breakpoint('large') {
+        width: 250px !important;
+        height: 250px;
+        margin-left: -125px;
+        margin-top: -125px;
+      }
+    }
+  }
+  &__generate-circle-1 {
+    @include breakpoint('large') {
+      @include big-circle-f(550px, #000);
+    }
+  }
+  &__generate-circle-2 {
+    @include breakpoint('large' ) {
+      @include midl-circle-f(500px, #000);
+    }
+  }
+  &__generate-circle-3 {
+    @include breakpoint('large') {
+      @include xs-circle-half(450px, #000);
+    }
+  }
+  &__generate-circle-4 {
+    @include breakpoint('large') {
+      @include xxs-circle-half(390px, #000);
+  }
+}
+}

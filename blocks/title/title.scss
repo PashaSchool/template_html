@@ -5,6 +5,7 @@
   line-height: 1.2;
   padding: 1rem 0;
   &__title {
+    text-transform: uppercase;
     @extend %responsive-font-title;
   }
 }
