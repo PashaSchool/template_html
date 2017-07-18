@@ -1,6 +1,9 @@
 .container {
+background-color: $white;
+position: relative;
+z-index: -1;
   @include breakpoint('large'){
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 }
 
@@ -11,7 +14,7 @@
   @include breakpoint('large') {
     @include distribute-on-circle(6, 600px, 50px, false);
     margin: 5rem auto;
-    border: solid 1px #000;
+    border: solid 2px $lmarsala;
   }
   &__item {
     width: calc(100% - 4px);
@@ -20,7 +23,7 @@
     }
 
     @include breakpoint('large') {
-      background-color: yellow;
+
       &:nth-child(5) > .service-item-desc,
       &:nth-child(4) > .service-item-desc,
       &:nth-child(3) > .service-item-desc {
@@ -37,13 +40,12 @@
       &:nth-child(3) .service-item-desc__info > .service-item-desc__desc {
           text-align: right;
       }
-
-
     }
     &--general-picture {
-      border: 1px solid #000;
+      border: 2px solid $lmarsala;
       height: 250px;
       width: 100%;
+      border-radius: 50%;
       order: -1;
       @include breakpoint('large') {
         width: 250px !important;
@@ -55,22 +57,22 @@
   }
   &__generate-circle-1 {
     @include breakpoint('large') {
-      @include big-circle-f(550px, #000);
+      @include big-circle-f(550px, $lmarsala);
     }
   }
   &__generate-circle-2 {
     @include breakpoint('large' ) {
-      @include midl-circle-f(500px, #000);
+      @include midl-circle-f(500px, $lmarsala);
     }
   }
   &__generate-circle-3 {
     @include breakpoint('large') {
-      @include xs-circle-half(450px, #000);
+      @include xs-circle-half(450px, $lmarsala);
     }
   }
   &__generate-circle-4 {
     @include breakpoint('large') {
-      @include xxs-circle-half(390px, #000);
+      @include xxs-circle-half(390px, $lmarsala);
   }
 }
 }
@@ -89,26 +91,49 @@
     @include breakpoint('mobile') {
       width: 30%;
     }
-
   }
+  &__icn-polygon {
+    width: 90px;
+    height: 90px;
+    background-color: $marsala;
+    border-radius: 50%;
+    border: 9px solid $lmarsala;
+    position: relative;
+    @extend %align-middle;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      z-index: 0;
+      border-radius: 50%;
+      border: 14px solid $white;
+    }
+  }
+
   &__svg-icon {
     width: 50px;
     height: 50px;
-    fill: #000
+    fill: $white
   }
   &__info {
     width: 100%;
+    color: $black;
+    padding: 0 1.2rem;
     @include breakpoint('mobile') {
       width: 70%;
     }
   }
   &__title {
     text-align: center;
+    margin-bottom: 10px;
+    font-weight: 200;
     @extend %responsive-text-head;
 
   }
   &__desc {
     text-align: center;
+    font-weight: 600;
     @extend %responsive-font-text;
     @include breakpoint('mobile') {
       text-align: left;
@@ -135,6 +160,16 @@
 
 .btn-wrapper {
   @extend %align-middle;
+  background-color: $white;
   padding: 1rem 0;
-  background-color: black;
+  // background-color: black;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
 }

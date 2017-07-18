@@ -1,11 +1,17 @@
-$masala: #965251;
+// $marsala: #965251;
+$blue: #1D0444;
+$marsala: #C26B6A;
 $white: #F4E7DF;
 $black: #36424E;
 $green: #4B4D38;
 $silver: #988574;
 $gold: #E1BE7A;
+$lmarsala: lighten($marsala, 20);
 
-$font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-sarif;
+//fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+// $font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-sarif;
+$font: 'Montserrat', sans-serif;
   // 'medium' : ( min-width:  1200px ),
 //breakpoints
 $breakpoints: (
@@ -38,7 +44,7 @@ $breakpoints: (
 }
 
 %responsive-font-text{
-  font-size: responsive 14px 21px;
+  font-size: responsive 14px 16px;
   font-range: 480px 1280px;
 }
 

@@ -14,6 +14,11 @@ button.button {
     padding: 1.2rem 3.5rem;
     font-size: 1.7rem;
   }
+  &.marsula-theme {
+    // color: $whi;
+    border: 2px solid $black;
+    background-color: $black;
+  }
   &:hover {
     background-color: $white;
     color: $black;

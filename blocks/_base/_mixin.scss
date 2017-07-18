@@ -161,7 +161,7 @@
   height: $p-height;
   margin-top: -($p-height / 2);
   margin-left: -($p-height / 2);
-  border: 1px solid $bdc;
+  border: 2px solid $bdc;
   border-radius: 50%;
   z-index: -1;
 }
@@ -172,9 +172,9 @@
   margin-top: -($p-height / 2);
   margin-left: -($p-height / 2);
 
-  border-right: 1px solid $bdc;
-  border-left: 1px solid $bdc;
-  border-bottom: 1px solid  $bdc;
+  border-right: 2px solid $bdc;
+  border-left: 2px solid $bdc;
+  border-bottom: 2px solid  $bdc;
   border-radius: 50%;
   z-index: -1;
 
@@ -187,9 +187,9 @@
   margin-top: -($p-height / 2);
   margin-left: -($p-height / 2);
 
-  border-right: 1px solid $bdc;
-  border-left: 1px solid $bdc;
-  border-top: 1px solid  $bdc;
+  border-right: 2px solid $bdc;
+  border-left: 2px solid $bdc;
+  border-top: 2px solid  $bdc;
   border-radius: 50%;
 
   border-bottom: 1px solid transparent;
@@ -201,7 +201,7 @@
   margin-top: -($p-height / 2);
   margin-left: -($p-height / 2);
 
-  border-bottom: 1px solid $bdc;
+  border-bottom: 2px solid $bdc;
   border-top: 1px solid transparent;
   border-radius: 50%;
 

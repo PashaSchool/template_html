@@ -7,7 +7,6 @@
   @extend %space-btw-c-y;
   position: relative;
   height: 4rem;
-  background-color: tomato;
   @include breakpoint('small') {
     display: block;
     height: 100px;
@@ -34,14 +33,30 @@
     }
     a {
       display: block;
-      background-color: orange;
+
       text-align: center;
       padding: 1rem .5rem;
       border-bottom: 1px solid $black;
+      transition: background-color .3s ease-in;
+
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: responsive 12px 14px;
+      line-height: 1.2;
+      font-range: 767px 1280px;
+      letter-spacing: 1px;
+      font-family: $font;
+
+      color: $white;
+      transition: color .2s ease-out;
+
+      &:hover {
+        cursor: pointer;
+        color: $marsala;
+      }
       @include breakpoint('small') {
         border-bottom: none;
       }
-      transition: background-color .3s ease-in;
       &:active {
         background-color: silver;
       }
@@ -54,11 +69,21 @@
     margin: auto;
     width: 100px;
     height: 100px;
-    background-color: violet;
+    border: 1px solid #000;
+    @include breakpoint('large') {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        display: block;
+      }
+    }
+    @include breakpoint('large') {
+      width: 250px;
+    }
   }
 }
 .toggle-nav-on-mobile {
-  background-color: lightgreen;
 
   flex-flow: column wrap;
   display: flex;
@@ -71,10 +96,8 @@
 
 //show for modile
 .show-on-mobile {
-  background-color: red;
   display: block;
   @include breakpoint('small') {
-    background-color: silver;
     display: none;
   }
 }
@@ -97,16 +120,15 @@
   position: relative;
   width: 50px;
   height: 50px;
-  background-color: $black;
-  @extend %align-middle;
 
+  @extend %align-middle;
   @include breakpoint('small') {
     display: none;
   }
   &__dash, &:after, &:before {
+    background-color: $white;
     width: 40px;
     height: 5px;
-    background-color: $white;
     display: block;
     position: relative;
   }

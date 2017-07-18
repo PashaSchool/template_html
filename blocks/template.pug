@@ -9,6 +9,8 @@ include circleService/circleService
 include portfolio/portfolio
 include aboutStudio/aboutStudio
 include contactUs/contactUs
+include ourLocation/ourLocation
+include footer/footer
 
 doctype html
 html(lang='en')
@@ -30,13 +32,18 @@ html(lang='en')
 						"title" : "Lorem ipsum curabitur quam urna fusce",
 						"descr" : "Lorem ipsum curabitur proin - orci massa eget commodo "
 					})
-				block serviceSection
-					+circleService()
-					+portfolio()
-					+aboutStudio()
-				block contactUs
-					+contactUs('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-		
+			block serviceSection
+				+circleService()
+				+portfolio()
+				+aboutStudio()
+			block contactUs
+				+contactUs('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+			block ourLocation
+				+ourLocation()
+			block footer
+				+footer()
+		block googleapis
+			script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCA7vNDxC7fkBNV9f7yfTFghJBerE8Pl2k&callback=initMap' async defer)
 		block scriptVendor
 			script( src="libs/jquery/dist/jquery.min.js")
 		block script

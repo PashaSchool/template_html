@@ -1,0 +1,25 @@
+.google-map-section {
+  position: relative;
+}
+#map {
+   height: 600px;
+}
+
+.contact-data{
+  display: flex;
+  background-color: rgba($green, .3);
+  flex-flow: row wrap;
+}
+.item{
+  width: 50%;
+  padding: 1rem;
+  &__icon-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__icon{}
+  &__title{}
+  &__list{}
+  &__info{}
+}

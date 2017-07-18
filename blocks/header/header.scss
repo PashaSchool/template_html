@@ -1,15 +1,58 @@
 .w-height{
-  background-color: $gold;
   position: relative;
   @include breakpoint('small') {
-    background-color: $green;
+    // background-color: $green;
   }
 }
+.header {
+  overflow: hidden;
+  &__animate-bg-stars-1,
+  &__animate-bg-stars-2 {
+    width: 300%;
+    height: 100%;
 
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+
+    background-image: url('../img/space.png');
+    background-blend-mode: multiply;
+    background-color: $marsala;
+
+    animation-name: slide_bg_right_first;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+
+    animation-direction: alternate;
+    transition-timing-function: linear;
+  }
+
+  &__animate-bg-sky {
+    width: 300%;
+    height: 100%;
+
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: .3;
+
+    background-image: url('../img/cloud.png');
+    background-blend-mode: multiply;
+    background-position: center;
+
+    animation-name: slide_bg_right_first;
+    animation-duration: 120s;
+    animation-iteration-count: infinite;
+
+    animation-direction: alternate-reverse;
+    transition-timing-function: linear;
+  }
+}
 .scroll-pointer-box {
   width: 50px;
   height: 50px;
-  background-color: violet;
   position: absolute;
   bottom: 0;
   @include breakpoint('small') {
@@ -24,7 +67,16 @@
       display: block;
       height: 55px;
       height: 55px;
-      fill: #000000;
+      fill: $white;
     }
+  }
+}
+
+@keyframes slide_bg_right_first {
+  0% {
+    transform: translateX(-50%);
+  }
+  100%{
+    transform: translateX(0);
   }
 }
