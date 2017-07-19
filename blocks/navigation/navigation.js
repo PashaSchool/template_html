@@ -13,6 +13,17 @@ var navigationAction = {
     $(this.btn).on('click', this.addClass.bind(this));
     $(window).on('resize', this.checkForMobileDevice.bind(this));
     $(window).on('load', this.checkForMobileDevice.bind(this));
+    $(document).on('scroll', this.navigationFixed.bind(this));
+  },
+  navigationFixed: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+    if(scrolled >= $(window).height()) {
+      $('nav.navigation').addClass('menu-fixed')
+    }
+    if(scrolled <= $(window).height() && $('nav.navigation').hasClass('menu-fixed')) {
+      $('nav.navigation').removeClass('menu-fixed')
+    }
   },
   checkForMobileDevice: function() {
     this.windowWidth = $(window).innerWidth();

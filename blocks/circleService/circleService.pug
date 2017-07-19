@@ -16,7 +16,7 @@ mixin item(data)
       
 mixin circleService()
   +b.SECTION.container
-    +title('Service work')
+    +title({"text":'Service work'})
     +b.UL.circle-container
       +item({
         "icon": "icon",
@@ -54,6 +54,7 @@ mixin circleService()
         "desc": "lorem Ipsum proin gravida nibh vel velit auctor aliquet."
       })
       +e.LI.item.--general-picture
+        +e.DIV.img-bg-service
       +e.LI.generate-circle-1
       +e.LI.generate-circle-2
       +e.LI.generate-circle-3

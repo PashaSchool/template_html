@@ -9,4 +9,8 @@
     color: $black;
     @extend %responsive-font-title;
   }
+  .reverse-color-to-lighter {
+    color: $lmarsala;
+    text-shadow: 0 0 1px rgba($black, .8);
+  }
 }

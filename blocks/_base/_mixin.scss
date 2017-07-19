@@ -149,13 +149,6 @@
   }
 }
 
-// transform:
-// rotate($rot * 1deg)
-// translate($half-parent)
-// rotate($rot * -1deg)
-// translate(-$half-parent + 50);
-
-
 @mixin big-circle-f($p-height, $bdc) {
   width: $p-height;
   height: $p-height;

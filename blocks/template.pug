@@ -2,6 +2,7 @@ include _assets/bemto/bemto
 - set_bemto_settings({ modifier: "--" })
 
 include head/head
+include preloader/preloader
 include header/header
 include navigation/navigation
 include promo/promo
@@ -19,6 +20,8 @@ html(lang='en')
 			"title": "test title"
 		})
 	body
+		block preloader
+			+preloader()
 		block header
 			+header()
 				block headerContent
@@ -46,6 +49,9 @@ html(lang='en')
 			script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCA7vNDxC7fkBNV9f7yfTFghJBerE8Pl2k&callback=initMap' async defer)
 		block scriptVendor
 			script( src="libs/jquery/dist/jquery.min.js")
+		block gsapAnimation
+			script( src="libs/gsap/src/minified/plugins/CSSPlugin.min.js")
+			script( src="libs/gsap/src/minified/TweenLite.min.js")
 		block script
 			script( src="js/main.js")
 			

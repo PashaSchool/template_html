@@ -1,8 +1,6 @@
 .contact-us {
-  background-color: $black;
-  // padding: 1rem 0 17rem;
+  background-color: $marsala;
   @include breakpoint('large') {
-    // padding: 1rem 0 24rem;
   }
 
   }
@@ -13,9 +11,14 @@
   @extend %align-middle;
   flex-flow: column wrap;
   &__title {
-    padding: 1rem 0;
+    padding: 0 0 1.8rem 0;
     text-align: center;
     display: block;
+    color: $white;
+    text-shadow: 0 0 1px rgba($black, .3);
+    font-weight: 200;
+    letter-spacing: 1px;
+    line-height: 1.2;
   }
 }
 
@@ -31,7 +34,6 @@
     align-items: stretch;
     @include breakpoint('large') {
       flex-flow: row nowrap;
-      // width: 50%;
     }
   }
   &__input-shell-responsive{
@@ -43,7 +45,6 @@
   &__textarea-shell-responsive{
     width: 100%;
     @include breakpoint('large') {
-      // align-items: stretch;
       width: 50%;
     }
   }
@@ -89,13 +90,17 @@
     padding: 15px 20px;
     line-height: 1.2;
     width: 100%;
-    height: 110px;
+    height: 150px;
     font-weight: 300;
+    resize: none;
   }
   &__input-submit-btn{
     width: 100%;
     border: none;
     padding: 15px 20px;
+    background-color: $lmarsala;
+    color: $black;
+    letter-spacing: 1px;
     @include breakpoint('large') {
       padding: 10px 20px;
     }
@@ -137,7 +142,7 @@
 
   }
 }
-::-webkit-input-placeholder {color:$black;}
-::-moz-placeholder          {color:$black;}/* Firefox 19+ */
-:-moz-placeholder           {color:$black;}/* Firefox 18- */
-:-ms-input-placeholder      {color:$black;}
+::-webkit-input-placeholder {color:$lmarsala;}
+::-moz-placeholder          {color:$lmarsala;}
+:-moz-placeholder           {color:$lmarsala;}
+:-ms-input-placeholder      {color:$lmarsala;}

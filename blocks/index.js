@@ -17,9 +17,18 @@ $(document).ready(function() {
     }
   };
 
+
   // initialization
   setHeight.init();
 
   //navigation action
   navigationAction.init();
-})
+console.log('doc is ready')
+});
+
+
+//spiner preloader
+$(window).on('load',function() {
+  console.log('window is ready')
+  $('#loader-preloader').remove();
+});
