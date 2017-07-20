@@ -23,18 +23,6 @@ $(document).ready(function() {
 
   //navigation action
   navigationAction.init();
-<<<<<<< HEAD
-console.log('doc is ready')
-});
-
-
-//spiner preloader
-$(window).on('load',function() {
-  console.log('window is ready')
-  $('#loader-preloader').remove();
-});
-=======
->>>>>>> f1-header
 
   //header animation
   headerAnimation.init();
@@ -169,19 +157,11 @@ var navigationAction = {
   },
   navigationFixed: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-<<<<<<< HEAD
-
-    if(scrolled >= $(window).height()) {
-      $('nav.navigation').addClass('menu-fixed')
-    }
-    if(scrolled <= $(window).height() && $('nav.navigation').hasClass('menu-fixed')) {
-=======
     var curentPos = $(window).height() * 1.5;
     if(scrolled  >= curentPos) {
       $('nav.navigation').addClass('menu-fixed')
     }
     if(scrolled <= curentPos && $('nav.navigation').hasClass('menu-fixed')) {
->>>>>>> f1-header
       $('nav.navigation').removeClass('menu-fixed')
     }
   },
@@ -402,12 +382,6 @@ function initMap() {
   })
 }
 
-<<<<<<< HEAD
-console.log('portfolio')
-// .portfolio-container__works
-// var el = document.getElementById('test');
-// console.log(document.getElementsByClassName('work-container'))
-=======
 
 //re-call initMap
 setTimeout(function(){
@@ -415,7 +389,6 @@ setTimeout(function(){
 }, 3000)
 
 
->>>>>>> f1-header
 var el = document.getElementsByClassName('portfolio-list__works');
 // TweenLite.to(el, 1, {scale: .9});
 
