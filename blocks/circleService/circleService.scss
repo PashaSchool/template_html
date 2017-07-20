@@ -6,11 +6,14 @@
   }
 }
 
+.container#service-section {
+  overflow: hidden;
+}
 .circle-container {
   display: flex;
   flex-flow: row wrap;
   z-index: 111;
-  overflow: hidden;
+
   @include breakpoint('large') {
     @include distribute-on-circle(6, 600px, 50px, false);
     margin: 5rem auto;
