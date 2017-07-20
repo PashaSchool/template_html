@@ -15,7 +15,7 @@ mixin item(data)
         +e.desc(class=data.modefire)=data.desc
       
 mixin circleService()
-  +b.SECTION.container
+  +b.SECTION.container#service-section
     +title({"text":'Service work'})
     +b.UL.circle-container
       +item({
@@ -59,10 +59,11 @@ mixin circleService()
       +e.LI.generate-circle-2
       +e.LI.generate-circle-3
       +e.LI.generate-circle-4
-  +b.DIV.btn-wrapper     
-    +button({
-      "text" : "hire us",
-      "modefier":"marsula-theme"
-    })
+      +e.LI.generate-circle-5
+    +b.DIV.btn-wrapper     
+      +button({
+        "text" : "hire us",
+        "modefier":"marsula-theme"
+      })
     
       

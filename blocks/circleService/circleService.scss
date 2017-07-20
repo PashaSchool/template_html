@@ -76,6 +76,11 @@
       @include xxs-circle-half(390px, $lmarsala);
   }
 }
+  &__generate-circle-5 {
+    @include breakpoint('large') {
+      @include xs-circle-half-ed(415px, $lmarsala);
+  }
+}
 }
 
 .service-item-desc {

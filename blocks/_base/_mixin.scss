@@ -201,3 +201,16 @@
   border-left: 1px solid  transparent;
   border-right: 1px solid transparent;
 }
+@mixin xs-circle-half-ed($p-height, $bdc) {
+  width: $p-height;
+  height: $p-height;
+  margin-top: -($p-height / 2);
+  margin-left: -($p-height / 2);
+
+  border-bottom: 2px solid transparent;
+  border-top: 1px solid transparent;
+  border-radius: 50%;
+
+  border-left: 1px solid  $bdc;
+  border-right: 1px solid $bdc;
+}

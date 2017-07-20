@@ -2,7 +2,6 @@
   @extend %align-middle;
   padding: 20px 0;
   position: relative;
-  // background-color: green;
     height: calc(100% - 4rem);
     @include breakpoint('small') {
     height: calc(100% - 100px);
@@ -12,7 +11,6 @@
 
 .intro-box {
   width: 70%;
-  // background-color: lightblue;
   margin-top: -4rem;
   transition: width all .3s;
 
@@ -29,23 +27,31 @@
     @extend %responsive-font-title;
     text-transform: uppercase;
     display: block;
-    // background-color: red;
     padding: 1rem;
     text-align: center;
     color: $white;
+
+    // opacity: 0;
+    // transform: translateY(-100);
 
   }
   &__short-descr{
     @extend %responsive-font-text;
     display: block;
-    // background-color: blue;
     text-align: center;
     padding: .5rem;
     color: $white;
+
+    // opacity: 0;
+    // transform: translateY(-100);
   }
   &__btn-wrapper {
     display: flex;
     padding: 2rem 0 .4rem 0;
     justify-content: center;
+    .button {
+      // opacity: 0;
+      // transform: translateY(-100);
+    }
   }
 }

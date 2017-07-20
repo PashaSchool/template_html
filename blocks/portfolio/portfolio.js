@@ -1,7 +1,4 @@
-console.log('portfolio')
-// .portfolio-container__works
-// var el = document.getElementById('test');
-// console.log(document.getElementsByClassName('work-container'))
+
 var el = document.getElementsByClassName('portfolio-list__works');
 // TweenLite.to(el, 1, {scale: .9});
 

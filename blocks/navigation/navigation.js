@@ -17,11 +17,11 @@ var navigationAction = {
   },
   navigationFixed: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-
-    if(scrolled >= $(window).height()) {
+    var curentPos = $(window).height() * 1.5;
+    if(scrolled  >= curentPos) {
       $('nav.navigation').addClass('menu-fixed')
     }
-    if(scrolled <= $(window).height() && $('nav.navigation').hasClass('menu-fixed')) {
+    if(scrolled <= curentPos && $('nav.navigation').hasClass('menu-fixed')) {
       $('nav.navigation').removeClass('menu-fixed')
     }
   },

@@ -196,3 +196,9 @@ function initMap() {
     map: map
   })
 }
+
+
+//re-call initMap
+setTimeout(function(){
+  initMap();
+}, 3000)

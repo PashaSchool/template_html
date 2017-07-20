@@ -23,12 +23,16 @@ $(document).ready(function() {
 
   //navigation action
   navigationAction.init();
-console.log('doc is ready')
+
+  //header animation
+  headerAnimation.init();
+
+  //service animation
+  serviceAnimation.init();
 });
 
 
 //spiner preloader
 $(window).on('load',function() {
-  console.log('window is ready')
   $('#loader-preloader').remove();
 });
