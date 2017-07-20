@@ -1,4 +1,4 @@
-mixin title(text)
+mixin title(data)
   +b.DIV.header-wrapper
     +b.H2.top-header
-      +e.SPAN.title=text
+      +e.SPAN.title(class=data.mod)=data.text

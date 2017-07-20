@@ -3,7 +3,7 @@ include ../title/title
 mixin contactUs(subtitle)
   +b.contact-us
     +b.wrapper-contact
-      +title('contact us')
+      +title({'text':'contact us', "mod": 'reverse-color-to-lighter'})
       +b.contact-form-container
         +e.SPAN.title=subtitle
         +b.FORM.contact-form
@@ -53,5 +53,5 @@ mixin contactUs(subtitle)
                   type="submit"
                   value="Submit message"
                 )
-  +b.DIV.bg-image            
+  //- +b.DIV.bg-image            
             

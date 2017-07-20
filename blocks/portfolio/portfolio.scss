@@ -1,3 +1,20 @@
+.portfolio-wrapper {
+  position: relative;
+  padding: 4rem 0;
+  &:before {
+    content: '';
+    height: 0;
+  	width: 0;
+    border-top: 50px solid $white;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -50px;
+  }
+}
 .portfolio-container{
   padding: 0 20px;
   @include breakpoint('small') {
@@ -11,12 +28,9 @@
     padding: 0 100px;
   }
   &__works {
-
     margin: 10px;
     width: calc(100% - 20px);
     position: relative;
-
-    background-color: lightgreen;
     @include breakpoint('mobile') {
       width: calc(50% - 20px);
     }
@@ -24,13 +38,17 @@
       width: calc(25% - 20px);
     }
     @include breakpoint('large') {
-      width: calc(20% - 20px);
+      // width: calc(25% - 20px);
     }
   }
   &__works-wrapper {
     padding-top: 70%;
     position: relative;
   }
+}
+.portfolio-wrapper {
+  background-color: $marsala;
+
 }
 .work-shell {
   position: absolute;
@@ -39,14 +57,70 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: silver;
 }
 
 .work-container {
-  @extend %align-middle;
   height: 100%;
-  span {
+  background-image: url('../img/portfolio.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
     display: block;
-    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background-color .3s ease-in;
+  }
+  &:hover:after{
+    background-color: rgba(#fff, .2);
+  }
+  &__share-container {
+    display: flex;
+    padding: 4px;
+    flex-flow: row nowrap;
+  }
+  &__icon {
+    margin-right: 10px;
+    opacity: 0;
+    &:last-child {
+      margin-right: 0;
+      transition-delay: .4;
+    }
+    svg {
+      height: 24px;
+      width: 24px;
+      fill: $black;
+    }
+  }
+  &__underline {
+    width: 0;
+    display: block;
+    height: 1px;
+    background-color: rgba($black, .3);
+  }
+  &__description {
+    padding: 4px 0;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color:  $black;
+    opacity: 0;
   }
 }
+
+
+//hover action
+
+.work-container:hover .work-container__icon {
+  cursor: pointer;
+}
+// .work-container:hover .work-container__icon:last-child {
+//   transform: translateY(0);
+//   opacity: 1
+// }

@@ -10,10 +10,8 @@ $lmarsala: lighten($marsala, 20);
 
 //fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-// $font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-sarif;
 $font: 'Montserrat', sans-serif;
-  // 'medium' : ( min-width:  1200px ),
-//breakpoints
+
 $breakpoints: (
   'mobile' : ( min-width: 767px),
   'small'  : ( min-width:  979px ),

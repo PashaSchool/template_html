@@ -23,6 +23,7 @@ $(document).ready(function() {
 
   //navigation action
   navigationAction.init();
+<<<<<<< HEAD
 console.log('doc is ready')
 });
 
@@ -32,7 +33,122 @@ $(window).on('load',function() {
   console.log('window is ready')
   $('#loader-preloader').remove();
 });
+=======
+>>>>>>> f1-header
 
+  //header animation
+  headerAnimation.init();
+
+  //service animation
+  serviceAnimation.init();
+});
+
+
+//spiner preloader
+$(window).on('load',function() {
+  $('#loader-preloader').remove();
+});
+
+var serviceAnimation = {
+  init: function() {
+    this.cacheDom();
+    this.bindEvents();
+  },
+  cacheDom: function() {
+    this.$service = $('#service-section');
+    this.$title = $(this.$service).find('.top-header');
+    this.$circleCont = $(this.$service).find('.circle-container');
+
+    this.$item_1 = $(this.$circleCont).find('.circle-container__item:nth-child(1)');
+    this.$item_2 = $(this.$circleCont).find('.circle-container__item:nth-child(2)');
+    this.$item_3 = $(this.$circleCont).find('.circle-container__item:nth-child(3)');
+    this.$item_4 = $(this.$circleCont).find('.circle-container__item:nth-child(4)');
+    this.$item_5 = $(this.$circleCont).find('.circle-container__item:nth-child(5)');
+    this.$item_6 = $(this.$circleCont).find('.circle-container__item:nth-child(6)');
+
+    this.$c5 = $(this.$service).find('.circle-container__generate-circle-5');
+    this.$c4 = $(this.$service).find('.circle-container__generate-circle-4');
+    this.$c3 = $(this.$service).find('.circle-container__generate-circle-3');
+    this.$c2 = $(this.$service).find('.circle-container__generate-circle-2');
+    this.$c1 = $(this.$service).find('.circle-container__generate-circle-1');
+
+    this.$btn = $(this.$service).find('.btn-wrapper');
+
+    // offset top
+    this.offsetTop = $(this.$service).offset().top;
+    //timeline
+    this.timelineHeader = new TimelineLite({
+      paused: true
+    });
+
+  },
+  bindEvents: function() {
+    if($(window).width() > 979) {
+      this.animation();
+      $(window).on('scroll', this.checkPosition.bind(this))
+    }
+  },
+  checkPosition: function(){
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+    if(scrolled >= (this.offsetTop * 0.9) ) {
+      this.timelineHeader.play();
+    }
+  },
+  animation: function() {
+    this.timelineHeader
+    .from(this.$title, 1, {autoAlpha: 0, y: -50, ease: Power2.easeOut})
+    .from(this.$c4, 5, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$c3, 4, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$c5, 4, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_1, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_2, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_6, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_3, 5, {autoAlpha: 0, x: -500, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_4, 5, {autoAlpha: 0, x: -450, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_5, 5, {autoAlpha: 0, x: -500, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$btn, 4, {autoAlpha: 0, y: 100, ease: Power2.easeOut}, 'atOneTime')
+
+  }
+}
+
+var headerAnimation = {
+  init: function() {
+    this.cacheDom();
+    this.bindEvents();
+  },
+  cacheDom: function() {
+    this.$title = $('.intro-box__title');
+    this.$desc = $('.intro-box__short-descr');
+    this.$btn = $('.intro-box__btn-wrapper');
+    this.$arrow = $('.scroll-pointer-box');
+
+    //timeline
+    this.timelineHeader = new TimelineLite({
+      paused: true,
+      onComplete:this.unbindEvent.bind(this)
+    });
+  },
+  unbindEvent: function(e) {
+    $(window).off('load', this.windowIsLoaded.bind(this))
+  },
+  bindEvents: function() {
+    $(window).on('load', this.windowIsLoaded.bind(this))
+  },
+  windowIsLoaded: function(e) {
+    this.animation()
+    this.timelineHeader.play();
+  },
+  animation: function() {
+    this.timelineHeader
+    .from(this.$title, 1, {autoAlpha: 0, y: -100, ease: Power2.easeOut})
+    .from(this.$desc, 1, {autoAlpha: 0, y: -100, ease: Power2.easeOut}, '-=0.4' )
+    .from(this.$btn, 1.3, {autoAlpha: 0, y: -100, ease: Power2.easeOut}, '-=0.4' )
+    .from(this.$arrow, 0.8, {autoAlpha: 0, y: -100, ease: Power2.easeOut})
+    .to(this.$arrow, 0.6, {y: -20, ease: Power2.easeOut})
+    .to(this.$arrow, 0.6, {y: 0, ease: Power2.easeOut})
+  }
+}
 
 var navigationAction = {
   init: function() {
@@ -53,11 +169,19 @@ var navigationAction = {
   },
   navigationFixed: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+<<<<<<< HEAD
 
     if(scrolled >= $(window).height()) {
       $('nav.navigation').addClass('menu-fixed')
     }
     if(scrolled <= $(window).height() && $('nav.navigation').hasClass('menu-fixed')) {
+=======
+    var curentPos = $(window).height() * 1.5;
+    if(scrolled  >= curentPos) {
+      $('nav.navigation').addClass('menu-fixed')
+    }
+    if(scrolled <= curentPos && $('nav.navigation').hasClass('menu-fixed')) {
+>>>>>>> f1-header
       $('nav.navigation').removeClass('menu-fixed')
     }
   },
@@ -278,10 +402,20 @@ function initMap() {
   })
 }
 
+<<<<<<< HEAD
 console.log('portfolio')
 // .portfolio-container__works
 // var el = document.getElementById('test');
 // console.log(document.getElementsByClassName('work-container'))
+=======
+
+//re-call initMap
+setTimeout(function(){
+  initMap();
+}, 3000)
+
+
+>>>>>>> f1-header
 var el = document.getElementsByClassName('portfolio-list__works');
 // TweenLite.to(el, 1, {scale: .9});
 

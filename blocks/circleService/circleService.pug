@@ -15,8 +15,8 @@ mixin item(data)
         +e.desc(class=data.modefire)=data.desc
       
 mixin circleService()
-  +b.SECTION.container
-    +title('Service work')
+  +b.SECTION.container#service-section
+    +title({"text":'Service work'})
     +b.UL.circle-container
       +item({
         "icon": "icon",
@@ -54,14 +54,16 @@ mixin circleService()
         "desc": "lorem Ipsum proin gravida nibh vel velit auctor aliquet."
       })
       +e.LI.item.--general-picture
+        +e.DIV.img-bg-service
       +e.LI.generate-circle-1
       +e.LI.generate-circle-2
       +e.LI.generate-circle-3
       +e.LI.generate-circle-4
-  +b.DIV.btn-wrapper     
-    +button({
-      "text" : "hire us",
-      "modefier":"marsula-theme"
-    })
+      +e.LI.generate-circle-5
+    +b.DIV.btn-wrapper     
+      +button({
+        "text" : "hire us",
+        "modefier":"marsula-theme"
+      })
     
       

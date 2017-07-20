@@ -17,9 +17,22 @@ $(document).ready(function() {
     }
   };
 
+
   // initialization
   setHeight.init();
 
   //navigation action
   navigationAction.init();
-})
+
+  //header animation
+  headerAnimation.init();
+
+  //service animation
+  serviceAnimation.init();
+});
+
+
+//spiner preloader
+$(window).on('load',function() {
+  $('#loader-preloader').remove();
+});

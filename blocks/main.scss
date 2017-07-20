@@ -4,6 +4,7 @@
 @import "_base/mixin";
 @import "_base/grid";
 
+@import "preloader/preloader";
 @import "button/button";
 @import "header/header";
 @import "navigation/navigation";
@@ -15,3 +16,8 @@
 @import "contactUs/contactUs";
 @import "ourLocation/ourLocation";
 @import "footer/footer";
+
+
+.portfolio-list__works {
+  box-shadow: 0px 5px 20px rgba(#000, .3);
+}

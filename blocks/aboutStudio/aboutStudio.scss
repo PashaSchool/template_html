@@ -1,20 +1,22 @@
 .about-studio-container {
-
+  padding: 3rem 0;
+  background-color: $white;
+  position: relative;
 }
 .about-studio-process {
-  padding: 2rem 0 4rem;
+  padding: 0 0 4rem;
 }
 .about-studio-descr {
   padding: 1rem;
   position: relative;
   display: flex;
   justify-content: center;
-
-  // top: 150px;
-  background-color: #fff;
-  z-index: 2000;
+  background-color: $white;
+  color: $black;
+  z-index: 11;
   &__text {
     text-align: center;
+    color: $black;
     @include breakpoint('mobile') {
       width: 80%;
     }
@@ -30,6 +32,7 @@
 .circle-container-about {
   display: flex;
   flex-flow: row wrap;
+  z-index: 10;
   .service-item-desc {
     display: flex;
     flex-flow: column wrap;
@@ -43,11 +46,13 @@
   }
   @include breakpoint('large') {
     @include distribute-on-circle-about(5, 600px, 50px, false);
-    margin: -100px auto 5rem;
-    border: solid 1px #000;
+    margin: 0 auto 5rem;
+    border: solid 2px $lmarsala;
+    transform: translateY(-80px);
   }
   &__item {
     width: calc(100% - 4px);
+    padding: 20px 0;
     @include breakpoint('mobile') {
       width: calc(50% - 4px);
       &--general-picture {
@@ -56,11 +61,12 @@
     }
 
     @include breakpoint('large') {
-      background-color: yellow;
       width: 150px;
+      // background-color: $white;
     }
     &--general-picture {
-      border: 1px solid #000;
+      border: 2px solid $lmarsala;
+      border-radius: 50%;
       height: 250px;
       width: 100%;
       order: -1;
@@ -74,22 +80,22 @@
   }
   &__generate-circle-1 {
     @include breakpoint('large') {
-      @include big-circle-f(550px, #000);
+      @include big-circle-f(550px, $lmarsala);
     }
   }
   &__generate-circle-2 {
     @include breakpoint('large' ) {
-      @include midl-circle-f(500px, #000);
+      @include midl-circle-f(500px, $lmarsala);
     }
   }
   &__generate-circle-3 {
     @include breakpoint('large') {
-      @include xs-circle-half(450px, #000);
+      @include xs-circle-half(450px, $lmarsala);
     }
   }
   &__generate-circle-4 {
     @include breakpoint('large') {
-      @include xxs-circle-half(390px, #000);
+      @include xxs-circle-half(390px, $lmarsala);
   }
 }
 }

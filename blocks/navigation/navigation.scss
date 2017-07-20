@@ -64,11 +64,12 @@
   }
   &__item-logo {
     flex-grow: 1;
+    align-self: stretch;
   }//__item logo
   &__logo-img {
     margin: auto;
     width: 100px;
-    height: 100px;
+    height: 100%;
     border: 1px solid #000;
     @include breakpoint('large') {
       display: flex;
@@ -141,5 +142,20 @@
     content: '';
     position: absolute;
     margin-top: 12px;
+  }
+}
+
+
+.menu-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $black;
+  width: 100%;
+  z-index: 99999999;
+  height: 75px;
+  transition: all .2s linear;
+  .header-line {
+    height: 100%;
   }
 }
