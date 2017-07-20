@@ -29,10 +29,13 @@ var serviceAnimation = {
     this.timelineHeader = new TimelineLite({
       paused: true
     });
-    this.animation();
+
   },
   bindEvents: function() {
-    $(window).on('scroll', this.checkPosition.bind(this))
+    if($(window).width() > 979) {
+      this.animation();
+      $(window).on('scroll', this.checkPosition.bind(this))
+    }
   },
   checkPosition: function(){
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
