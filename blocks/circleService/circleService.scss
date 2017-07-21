@@ -22,6 +22,7 @@
   &__item {
     width: calc(100% - 4px);
     padding: 20px 0;
+    opacity: 1;
     @include breakpoint('mobile') {
       width: calc(50% - 4px);
     }

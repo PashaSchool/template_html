@@ -18,8 +18,6 @@ var serviceAnimation = {
     this.$c5 = $(this.$service).find('.circle-container__generate-circle-5');
     this.$c4 = $(this.$service).find('.circle-container__generate-circle-4');
     this.$c3 = $(this.$service).find('.circle-container__generate-circle-3');
-    this.$c2 = $(this.$service).find('.circle-container__generate-circle-2');
-    this.$c1 = $(this.$service).find('.circle-container__generate-circle-1');
 
     this.$btn = $(this.$service).find('.btn-wrapper');
 
@@ -27,12 +25,21 @@ var serviceAnimation = {
     this.offsetTop = $(this.$service).offset().top;
     //timeline
     this.timelineHeader = new TimelineLite({
-      paused: true
+      paused: true,
+      onComplete: this._deleteALlAttrStyle.bind(this)
     });
 
   },
+  _deleteALlAttrStyle: function() {
+    $(this.$circleCont)
+    .children().each(function(i, el) {
+      if(el.hasAttribute('style')) {
+        $(el).removeAttr('style')
+      }
+    })
+  },
   bindEvents: function() {
-    if($(window).width() > 979) {
+    if($(window).width() > 1200) {
       this.animation();
       $(window).on('scroll', this.checkPosition.bind(this))
     }
