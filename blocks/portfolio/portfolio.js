@@ -5,8 +5,6 @@ var el = document.getElementsByClassName('portfolio-list__works');
 for(var i = 0; i < el.length; i++) {
 
   el[i].addEventListener('mousemove', function(e){
-      //w - 560
-      //h - 390
       var target = this;
       var dx = e.offsetX - ($(target).width() / 2);
       var dy = e.offsetY - ($(target).height() / 2);
@@ -42,4 +40,22 @@ for(var i = 0; i < el.length; i++) {
       TweenLite.from($(target).find('.work-container__description'), .2, {y: 40});
 
     });
-}
+};
+
+
+  var tl = new TimelineLite({
+    paused: true
+  });
+
+  tl
+    .staggerFrom($('.portfolio-list__works:nth-child(odd)'), 1.5, {scale: 0, autoAplha: 0, y: -150}, .25, 'theSameTime')
+    .staggerFrom($('.portfolio-list__works:nth-child(even)'), 1.5, {scale: 0, autoAplha: 0, y: 150}, .25, 'theSameTime');
+
+
+$(window).on('scroll', function() {
+   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+   if(scrolled > $('#portfolio-wrapper').position().top * 0.8) {
+      tl.play();
+   }
+  // console.log(document.querySelector('#portfolio-wrapper').offsetTop, window.pageYOffset)
+})

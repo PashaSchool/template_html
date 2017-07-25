@@ -382,11 +382,13 @@ function initMap() {
 ]
   };
 
-  var map = new google.maps.Map(document.getElementById('map'), option)
-  var marker = new google.maps.Marker({
-    position: option.center,
-    map: map
-  })
+  var map = new google.maps.Map(document.getElementById('map'), option);
+map.setTilt(45);
+var marker = new google.maps.Marker({
+  position: option.center,
+  map: map
+})
+
 }
 
 
@@ -394,6 +396,210 @@ function initMap() {
 setTimeout(function(){
   initMap();
 }, 3000)
+// function initMap() {
+//   var option = {
+//     center: {lat: 49.85, lng: 24.0166666667},
+//     scrollwheel: false,
+//     zoom: 18,
+//     styles:[
+//     {
+//         "featureType": "water",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "color": "#d3d3d3"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "transit",
+//         "stylers": [
+//             {
+//                 "color": "#808080"
+//             },
+//             {
+//                 "visibility": "off"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road.highway",
+//         "elementType": "geometry.stroke",
+//         "stylers": [
+//             {
+//                 "visibility": "on"
+//             },
+//             {
+//                 "color": "#b3b3b3"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road.highway",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "color": "#ffffff"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road.local",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "visibility": "on"
+//             },
+//             {
+//                 "color": "#ffffff"
+//             },
+//             {
+//                 "weight": 1.8
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road.local",
+//         "elementType": "geometry.stroke",
+//         "stylers": [
+//             {
+//                 "color": "#d7d7d7"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "poi",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "visibility": "on"
+//             },
+//             {
+//                 "color": "#ebebeb"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "administrative",
+//         "elementType": "geometry",
+//         "stylers": [
+//             {
+//                 "color": "#a7a7a7"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road.arterial",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "color": "#ffffff"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road.arterial",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "color": "#ffffff"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "landscape",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "visibility": "on"
+//             },
+//             {
+//                 "color": "#C26B6A"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road",
+//         "elementType": "labels.text.fill",
+//         "stylers": [
+//             {
+//                 "color": "#36424E"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "administrative",
+//         "elementType": "labels.text.fill",
+//         "stylers": [
+//             {
+//                 "visibility": "on"
+//             },
+//             {
+//                 "color": "#000000"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "poi",
+//         "elementType": "labels.icon",
+//         "stylers": [
+//             {
+//                 "visibility": "off"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "poi",
+//         "elementType": "labels",
+//         "stylers": [
+//             {
+//                 "visibility": "off"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road.arterial",
+//         "elementType": "geometry.stroke",
+//         "stylers": [
+//             {
+//                 "color": "#d6d6d6"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "road",
+//         "elementType": "labels.icon",
+//         "stylers": [
+//             {
+//                 "visibility": "off"
+//             }
+//         ]
+//     },
+//     {},
+//     {
+//         "featureType": "poi",
+//         "elementType": "geometry.fill",
+//         "stylers": [
+//             {
+//                 "color": "#dadada"
+//             }
+//         ]
+//     }
+// ]
+//   };
+//
+//   var map = new google.maps.Map(document.getElementById('map'), option)
+//   var marker = new google.maps.Marker({
+//     position: option.center,
+//     map: map
+//   })
+// }
+//
+//
+// //re-call initMap
+// setTimeout(function(){
+//   initMap();
+// }, 3000)
 
 
 var el = document.getElementsByClassName('portfolio-list__works');
@@ -402,8 +608,6 @@ var el = document.getElementsByClassName('portfolio-list__works');
 for(var i = 0; i < el.length; i++) {
 
   el[i].addEventListener('mousemove', function(e){
-      //w - 560
-      //h - 390
       var target = this;
       var dx = e.offsetX - ($(target).width() / 2);
       var dy = e.offsetY - ($(target).height() / 2);
@@ -439,4 +643,22 @@ for(var i = 0; i < el.length; i++) {
       TweenLite.from($(target).find('.work-container__description'), .2, {y: 40});
 
     });
-}
+};
+
+
+  var tl = new TimelineLite({
+    paused: true
+  });
+
+  tl
+    .staggerFrom($('.portfolio-list__works:nth-child(odd)'), 1.5, {scale: 0, autoAplha: 0, y: -150}, .25, 'theSameTime')
+    .staggerFrom($('.portfolio-list__works:nth-child(even)'), 1.5, {scale: 0, autoAplha: 0, y: 150}, .25, 'theSameTime');
+
+
+$(window).on('scroll', function() {
+   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+   if(scrolled > $('#portfolio-wrapper').position().top * 0.8) {
+      tl.play();
+   }
+  // console.log(document.querySelector('#portfolio-wrapper').offsetTop, window.pageYOffset)
+})
