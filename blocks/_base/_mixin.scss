@@ -138,7 +138,7 @@
       > :nth-of-type(#{$i}) {
         transform:
         rotate($rot * 1deg)
-        translate($half-parent)
+        translate($half-parent - 5)
         rotate($rot * -1deg)
         translate(-$half-parent / 3);
       }

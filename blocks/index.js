@@ -29,6 +29,9 @@ $(document).ready(function() {
 
   //service animation
   serviceAnimation.init();
+
+  // animateabout section
+  aboutStudioAnimation.init();
 });
 
 
