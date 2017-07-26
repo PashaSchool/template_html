@@ -184,38 +184,6 @@ var serviceAnimation = {
   }
 }
 
-var footerAnimation = {
-  init: function() {
-    this.chacheDom();
-    this.bindEvents();
-  },
-  chacheDom: function() {
-    this.$footer = $('footer.footer');
-    this.$client = $(this.$footer).find('.our-client');
-    this.$logoDescr = $(this.$footer).find('.logo-descr');
-    this.timeLine = new TimelineLite({paused: true});
-    this.setAnimation();
-  },
-  bindEvents: function() {
-    $(window).on('scroll', this.footerAnimation.bind(this));
-  },
-  footerAnimation: function(e) {
-    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    if(scrolled > $(this.$footer).position().top - $(this.$footer).height()) {
-      this.animation();
-    }
-  },
-  animation: function() {
-    this.timeLine.play();
-  },
-  setAnimation: function() {
-    this.timeLine
-        .from(this.$client, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
-        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
-  }
-  
-};
-
 var contactUsForm = {
   init: function() {
     this.chacheDom();
@@ -248,6 +216,38 @@ var contactUsForm = {
     this.timeLine
         .staggerFrom(this.$inputs, .8, {autoAlpha: 0,y: -100}, .1)
         .staggerFrom(this.$icons, .5, {autoAlpha: 0, x: 40}, .1)
+  }
+  
+};
+
+var footerAnimation = {
+  init: function() {
+    this.chacheDom();
+    this.bindEvents();
+  },
+  chacheDom: function() {
+    this.$footer = $('footer.footer');
+    this.$client = $(this.$footer).find('.our-client');
+    this.$logoDescr = $(this.$footer).find('.logo-descr');
+    this.timeLine = new TimelineLite({paused: true});
+    this.setAnimation();
+  },
+  bindEvents: function() {
+    $(window).on('scroll', this.footerAnimation.bind(this));
+  },
+  footerAnimation: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    if(scrolled > $(this.$footer).position().top - $(this.$footer).height()) {
+      this.animation();
+    }
+  },
+  animation: function() {
+    this.timeLine.play();
+  },
+  setAnimation: function() {
+    this.timeLine
+        .from(this.$client, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
+        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
   }
   
 };
@@ -340,7 +340,6 @@ function initMap() {
     center: {lat: 49.85, lng: 24.0166666667},
     scrollwheel: false,
     zoom: 18,
-    // disableDefaultUI: true,
     scaleControl: true,
     styles:[
     {
@@ -529,16 +528,21 @@ function initMap() {
 ]
   };
 
+    var icn = '<svg id="marker" fill="#F4E7DF" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">' +
+    + '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>' +
+    + '<path d="M0 0h24v24H0z" fill="none"/> </svg>';
+
     var map = new google.maps.Map(document.getElementById('map'), option);
     // map.setTilt(45);
     var marker = new google.maps.Marker({
       map: map,
-      icon: '../img/marker/markerSvg.svg',
+      icon: {url: '../img/marker/markerSvg.svg'},
       position: option.center
     });
 
 
 }
+// 
 
 
 //re-call initMap
