@@ -15,7 +15,7 @@ var footerAnimation = {
   },
   footerAnimation: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    if(scrolled > $(this.$footer).position().top - $(this.$footer).height()) {
+    if(scrolled > ($(this.$footer).position().top - $(this.$footer).height()) -200) {
       this.animation();
     }
   },

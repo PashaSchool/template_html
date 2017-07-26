@@ -18,7 +18,7 @@ var contactUsForm = {
   },
   makeAnimationForContactform: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    if(scrolled > $(this.$formContainer).position().top) {
+    if(scrolled > $(this.$formContainer).position().top * 0.9) {
       this.animation();
     }
   },
