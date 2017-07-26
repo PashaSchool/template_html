@@ -335,67 +335,6 @@ var navigationAction = {
   }
 };
 
-
-var el = document.getElementsByClassName('portfolio-list__works');
-// TweenLite.to(el, 1, {scale: .9});
-
-for(var i = 0; i < el.length; i++) {
-
-  el[i].addEventListener('mousemove', function(e){
-      var target = this;
-      var dx = e.offsetX - ($(target).width() / 2);
-      var dy = e.offsetY - ($(target).height() / 2);
-
-      var _x = dx * 0.1;
-      var _y = dy * 0.1;
-
-      TweenLite.to(target, .2, {x: _x, y: _y});
-      TweenLite.to(target, .2, {rotationY: dx/10, rotationX: -dy/10});
-
-    });
-
-  el[i].addEventListener('mouseout', function(e){
-    var target = this;
-    TweenLite.to(target, .2, {scale: 1});
-    TweenLite.to(target, .2, {x: 0, y: 0});
-    TweenLite.to(target, .2, {rotationY: 0, rotationX: 0});
-
-      TweenLite.to($(target).find('.work-container__icon'), .2, {y: 0});
-      TweenLite.to($(target).find('.work-container__underline'), .2, {width: 0});
-      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 0});
-      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 0});
-      TweenLite.from($(target).find('.work-container__description'), .2, {y: 0});
-  });
-
-  el[i].addEventListener('mouseover',  function(e){
-    var target = this;
-      TweenLite.to(target, .2, {scale: 1.1});
-      TweenLite.from($(target).find('.work-container__icon'), .4, {y: 20});
-      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 1});
-      TweenLite.to($(target).find('.work-container__underline'), .5, {width: '100%'});
-      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 1});
-      TweenLite.from($(target).find('.work-container__description'), .2, {y: 40});
-
-    });
-};
-
-
-  var tl = new TimelineLite({
-    paused: true
-  });
-
-  tl
-    .staggerFrom($('.portfolio-list__works:nth-child(odd)'), 1.5, {scale: 0, autoAplha: 0, y: -150}, .25, 'theSameTime')
-    .staggerFrom($('.portfolio-list__works:nth-child(even)'), 1.5, {scale: 0, autoAplha: 0, y: 150}, .25, 'theSameTime');
-
-
-$(window).on('scroll', function() {
-   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-   if(scrolled > $('#portfolio-wrapper').position().top * 0.8) {
-      tl.play();
-   }
-  // console.log(document.querySelector('#portfolio-wrapper').offsetTop, window.pageYOffset)
-})
 function initMap() {
   var option = {
     center: {lat: 49.85, lng: 24.0166666667},
@@ -641,3 +580,65 @@ var googleMapLocation = {
   }
   
 };
+
+
+var el = document.getElementsByClassName('portfolio-list__works');
+// TweenLite.to(el, 1, {scale: .9});
+
+for(var i = 0; i < el.length; i++) {
+
+  el[i].addEventListener('mousemove', function(e){
+      var target = this;
+      var dx = e.offsetX - ($(target).width() / 2);
+      var dy = e.offsetY - ($(target).height() / 2);
+
+      var _x = dx * 0.1;
+      var _y = dy * 0.1;
+
+      TweenLite.to(target, .2, {x: _x, y: _y});
+      TweenLite.to(target, .2, {rotationY: dx/10, rotationX: -dy/10});
+
+    });
+
+  el[i].addEventListener('mouseout', function(e){
+    var target = this;
+    TweenLite.to(target, .2, {scale: 1});
+    TweenLite.to(target, .2, {x: 0, y: 0});
+    TweenLite.to(target, .2, {rotationY: 0, rotationX: 0});
+
+      TweenLite.to($(target).find('.work-container__icon'), .2, {y: 0});
+      TweenLite.to($(target).find('.work-container__underline'), .2, {width: 0});
+      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 0});
+      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 0});
+      TweenLite.from($(target).find('.work-container__description'), .2, {y: 0});
+  });
+
+  el[i].addEventListener('mouseover',  function(e){
+    var target = this;
+      TweenLite.to(target, .2, {scale: 1.1});
+      TweenLite.from($(target).find('.work-container__icon'), .4, {y: 20});
+      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 1});
+      TweenLite.to($(target).find('.work-container__underline'), .5, {width: '100%'});
+      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 1});
+      TweenLite.from($(target).find('.work-container__description'), .2, {y: 40});
+
+    });
+};
+
+
+  var tl = new TimelineLite({
+    paused: true
+  });
+
+  tl
+    .staggerFrom($('.portfolio-list__works:nth-child(odd)'), 1.5, {scale: 0, autoAplha: 0, y: -150}, .25, 'theSameTime')
+    .staggerFrom($('.portfolio-list__works:nth-child(even)'), 1.5, {scale: 0, autoAplha: 0, y: 150}, .25, 'theSameTime');
+
+
+$(window).on('scroll', function() {
+   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+   if(scrolled > $('#portfolio-wrapper').position().top * 0.8) {
+      tl.play();
+   }
+  // console.log(document.querySelector('#portfolio-wrapper').offsetTop, window.pageYOffset)
+})
