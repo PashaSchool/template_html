@@ -1,19 +1,19 @@
 include ../title/title
 mixin ourLocation()
   +b.SECTION.google-map-section
-    +title({"text":'About Studio'})
+    +b.H3.sub-title we are based in
     #map
     +b.DIV.contact-data
       +b.DIV.item
         +e.DIV.icon-wrapper
           +e.DIV.icon
-            svg(fill='#000000', height='24', viewbox='0 0 24 24', width='24', xmlns='http://www.w3.org/2000/svg')
+            svg(fill='#000000', viewbox='0 0 24 24', xmlns='http://www.w3.org/2000/svg')
               path(d='M0 0h24v24H0z', fill='none')
               path(d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z')
+        +e.SPAN.title(class='hide-on-mobile') ADRESS
+        +e.UL.list 
+          +e.LI.info street 33/33 
 
-        +e.SPAN.title ADRESS
-        +e.list 
-          +e.info street 33/33 
       +b.DIV.item
         +e.DIV.icon-wrapper
           +e.DIV.icon
@@ -21,7 +21,7 @@ mixin ourLocation()
               path(d='M0 0h24v24H0V0z', fill='none')
               path(d='M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z')
 
-        +e.SPAN.title PHONES
+        +e.SPAN.title(class='hide-on-mobile') PHONES
         +e.list 
           +e.info Phone:  +1 916-875-2235
           +e.info Phone:  +1 916-875-2235
@@ -33,7 +33,7 @@ mixin ourLocation()
               path(d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z')
               path(d='M0 0h24v24H0z', fill='none')
 
-        +e.SPAN.title CONTACTS
+        +e.SPAN.title(class='hide-on-mobile') CONTACTS
         +e.list 
           +e.info info@ourmail.com
           +e.info info@ourmail.com
@@ -45,7 +45,7 @@ mixin ourLocation()
               path(d='M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z')
               path(d='M0 0h24v24H0z', fill='none')
 
-        +e.SPAN.title WORKING HOURS
+        +e.SPAN.title(class='hide-on-mobile') WORKING HOURS
         +e.list 
           +e.info Monday-Friday: 9:00 – 18:00
           +e.info Saturday:  11:00 – 17:00

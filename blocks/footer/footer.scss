@@ -1,0 +1,123 @@
+.footer{
+	display: flex;
+	padding: 20px 0;
+
+	background-color: $white;
+	flex-wrap: wrap;
+	@include breakpoint('small') {
+		flex-wrap: no-wrap;
+	}
+}
+.logo-descr {
+	width: 100%;
+	padding: 0 20px;
+	@include breakpoint('small') {
+		width: 50%;
+	}
+	&__logo-place {
+		width: 100%;
+		min-height: 150px;
+		text-transform: uppercase;
+		@extend %align-middle;
+		div {
+			width: 200px;
+			height: 100px;
+			border: 1px solid $black;
+			@extend %align-middle;
+			color: $black;
+		}
+	}
+	&__header {
+		margin: 10px 0;
+		font-weight: bolder;
+		@extend %responsive-text-head;
+		text-align: center;
+		text-transform: uppercase;
+		color: $black;
+		position: relative;
+		display: flex;
+		align-items: center;
+		&:before,
+		&:after {
+			content: '';
+			width: 100%;
+			display: inline-block;
+			position: relative;
+			height: 1px;
+			background-color: $black;
+
+		}
+		span {
+			padding: 0 20px;
+		}
+	}
+
+	&__descr {
+		color: $black;
+		opacity: .8
+
+	}
+}
+
+/////////////////////
+.our-client {
+	width: 100%;
+		@include breakpoint('small') {
+		width: 50%;
+	}
+	&__title {
+		@extend .logo-descr__header;
+	}
+	&__list-clients {
+		display: flex;
+		flex-flow: wrap row;
+		// justify-content: space-between;
+	}
+	&__client {
+		margin: 5px;
+		width: calc(20% - 10px);
+		a {
+			
+		}
+	}
+	&__client-logo {
+		padding: 10px;
+		@extend %align-middle;
+		svg {
+			width: 48px;
+			height: 48px;
+			fill: $black;
+			opacity: .6;
+			transition: all .3s linear;
+		}
+		&:hover > svg{
+			opacity: 1;
+		}
+	}
+}
+
+
+.footer-bottom-line {
+	padding: 20px 50px;
+	background-color: $marsala;
+	display: flex;
+
+	&__copyright {
+		color: $black;
+		letter-spacing: 1px;
+		font-weight: 200;
+	}
+}
+
+.social-icons{
+	display: flex;	
+	flex-grow: 1;
+	justify-content: flex-end;
+	&__social-icn {
+		margin-left: 10px;
+		font-size: 18px;
+		a {
+			color: $black
+		}
+	}
+}
