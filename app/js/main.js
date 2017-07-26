@@ -536,7 +536,7 @@ function initMap() {
     // map.setTilt(45);
     var marker = new google.maps.Marker({
       map: map,
-      icon: {url: '../img/marker/markerSvg.svg'},
+      icon: {url: '../img/markerSvg.svg'},
       position: option.center
     });
 
