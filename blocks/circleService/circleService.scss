@@ -98,9 +98,11 @@
 
   &__icon {
     width: 100%;
+    margin-bottom: 10px;
     @extend %align-middle;
     @include breakpoint('mobile') {
       width: 30%;
+      margin-bottom: 0;
     }
   }
   &__icn-polygon {

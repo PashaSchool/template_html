@@ -74,13 +74,16 @@ var aboutStudioAnimation = {
 		this.$item_5 = $(this.$circleContainer).find('.circle-container-about__item:nth-child(5)');
 
 		this.timeLine = new TimelineLite({
-		    paused: true
+		    paused: true,
+		    onComplete: this._deleteALlAttrStyle.bind(this)
 		  });
 
 	},
 	bindEvent: function() {
-		this.animation();
-		$(window).on('scroll', this.animateAboutSection.bind(this))
+	    if($(window).width() > 1200) { 
+			this.animation();
+			$(window).on('scroll', this.animateAboutSection.bind(this))
+		}
 	},
 	animateAboutSection: function() {
 		var scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -88,6 +91,14 @@ var aboutStudioAnimation = {
 			
 			this.timeLine.play()
 		}
+	},
+	_deleteALlAttrStyle: function() {
+		$(this.$circleContainer)
+			.children().each(function(i, el) {
+				if(el.hasAttribute('style')) {
+					$(el).removeAttr('style')
+				}
+			})
 	},
 	animation: function() {
 		this.timeLine
@@ -173,38 +184,6 @@ var serviceAnimation = {
   }
 }
 
-var contactUsForm = {
-  init: function() {
-    this.chacheDom();
-    this.bindEvents();
-  },
-  chacheDom: function() {
-    this.$formContainer = $('#contact-us-form');
-    this.$inputs = $(this.$formContainer).find('[data-anim-input]');
-    this.$icons = $(this.$formContainer).find('[data-anim-icon]');
-    this.timeLine = new TimelineLite({paused: true});
-    this.setAnimation();
-  },
-  bindEvents: function() {
-    $(window).on('scroll', this.makeAnimationForContactform.bind(this));
-  },
-  makeAnimationForContactform: function(e) {
-    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    if(scrolled > $(this.$formContainer).position().top) {
-      this.animation();
-    }
-  },
-  animation: function() {
-    this.timeLine.play();
-  },
-  setAnimation: function() {
-    this.timeLine
-        .staggerFrom(this.$inputs, .8, {autoAlpha: 0,y: -100}, .1)
-        .staggerFrom(this.$icons, .5, {autoAlpha: 0, x: 40}, .1)
-  }
-  
-};
-
 var footerAnimation = {
   init: function() {
     this.chacheDom();
@@ -223,7 +202,6 @@ var footerAnimation = {
   footerAnimation: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
     if(scrolled > $(this.$footer).position().top - $(this.$footer).height()) {
-    console.log('works', $(this.$footer).position().top - $(this.$footer).height(), scrolled)
       this.animation();
     }
   },
@@ -232,8 +210,44 @@ var footerAnimation = {
   },
   setAnimation: function() {
     this.timeLine
-        .from(this.$client, .8, {autoAlpha: 0,y: -100})
-        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100})
+        .from(this.$client, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
+        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
+  }
+  
+};
+
+var contactUsForm = {
+  init: function() {
+    this.chacheDom();
+    this.bindEvents();
+  },
+  chacheDom: function() {
+    this.$formContainer = $('#contact-us-form');
+    this.$inputs = $(this.$formContainer).find('[data-anim-input]');
+    this.$icons = $(this.$formContainer).find('[data-anim-icon]');
+    this.timeLine = new TimelineLite({paused: true});
+    
+  },
+  bindEvents: function() {
+    if($(window).width() > 1200) { 
+      this.setAnimation();
+      $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+    }
+  },
+  makeAnimationForContactform: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    if(scrolled > $(this.$formContainer).position().top) {
+      this.animation();
+    }
+  },
+  animation: function() {
+    this.timeLine.play();
+  },
+
+  setAnimation: function() {
+    this.timeLine
+        .staggerFrom(this.$inputs, .8, {autoAlpha: 0,y: -100}, .1)
+        .staggerFrom(this.$icons, .5, {autoAlpha: 0, x: 40}, .1)
   }
   
 };
