@@ -32,6 +32,15 @@ $(document).ready(function() {
 
   // animateabout section
   aboutStudioAnimation.init();
+
+  //contact us form animation
+  contactUsForm.init();
+
+  //google map location
+  googleMapLocation.init();
+
+  //footer animation
+  footerAnimation.init();
 });
 
 
@@ -94,6 +103,38 @@ var aboutStudioAnimation = {
 			.from(this.$item_5, 5, {x: -370, ease: Power2.easeOut}, 'atTheOneTime')
 	}
 }
+var contactUsForm = {
+  init: function() {
+    this.chacheDom();
+    this.bindEvents();
+  },
+  chacheDom: function() {
+    this.$formContainer = $('#contact-us-form');
+    this.$inputs = $(this.$formContainer).find('[data-anim-input]');
+    this.$icons = $(this.$formContainer).find('[data-anim-icon]');
+    this.timeLine = new TimelineLite({paused: true});
+    this.setAnimation();
+  },
+  bindEvents: function() {
+    $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+  },
+  makeAnimationForContactform: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    if(scrolled > $(this.$formContainer).position().top) {
+      this.animation();
+    }
+  },
+  animation: function() {
+    this.timeLine.play();
+  },
+  setAnimation: function() {
+    this.timeLine
+        .staggerFrom(this.$inputs, .8, {autoAlpha: 0,y: -100}, .1)
+        .staggerFrom(this.$icons, .5, {autoAlpha: 0, x: 40}, .1)
+  }
+  
+};
+
 var serviceAnimation = {
   init: function() {
     this.cacheDom();
@@ -164,6 +205,38 @@ var serviceAnimation = {
   }
 }
 
+var footerAnimation = {
+  init: function() {
+    this.chacheDom();
+    this.bindEvents();
+  },
+  chacheDom: function() {
+    this.$footer = $('footer.footer');
+    this.$client = $(this.$footer).find('.our-client');
+    this.$logoDescr = $(this.$footer).find('.logo-descr');
+    this.timeLine = new TimelineLite({paused: true});
+    this.setAnimation();
+  },
+  bindEvents: function() {
+    $(window).on('scroll', this.footerAnimation.bind(this));
+  },
+  footerAnimation: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    if(scrolled > $(this.$footer).position().top - $(this.$footer).height()) {
+    console.log('works', $(this.$footer).position().top - $(this.$footer).height(), scrolled)
+      this.animation();
+    }
+  },
+  animation: function() {
+    this.timeLine.play();
+  },
+  setAnimation: function() {
+    this.timeLine
+        .from(this.$client, .8, {autoAlpha: 0,y: -100})
+        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100})
+  }
+  
+};
 
 var headerAnimation = {
   init: function() {
@@ -460,6 +533,35 @@ setTimeout(function(){
 }, 3000)
 
 
+var googleMapLocation = {
+  init: function() {
+    this.chacheDom();
+    this.bindEvents();
+  },
+  chacheDom: function() {
+    this.$googleMapLocation = $('.google-map-section');
+    this.$elem = $(this.$googleMapLocation).find('.item');
+    this.timeLine = new TimelineLite({paused: true});
+    this.setAnimation();
+  },
+  bindEvents: function() {
+    $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+  },
+  makeAnimationForContactform: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    if(scrolled > $(this.$googleMapLocation).position().top) {
+      this.animation();
+    }
+  },
+  animation: function() {
+    this.timeLine.play();
+  },
+  setAnimation: function() {
+    this.timeLine
+        .from(this.$elem, .8, {autoAlpha: 0,y: -100}, .1)
+  }
+  
+};
 
 
 var el = document.getElementsByClassName('portfolio-list__works');

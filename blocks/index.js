@@ -32,6 +32,15 @@ $(document).ready(function() {
 
   // animateabout section
   aboutStudioAnimation.init();
+
+  //contact us form animation
+  contactUsForm.init();
+
+  //google map location
+  googleMapLocation.init();
+
+  //footer animation
+  footerAnimation.init();
 });
 
 

@@ -210,3 +210,32 @@ setTimeout(function(){
 }, 3000)
 
 
+var googleMapLocation = {
+  init: function() {
+    this.chacheDom();
+    this.bindEvents();
+  },
+  chacheDom: function() {
+    this.$googleMapLocation = $('.google-map-section');
+    this.$elem = $(this.$googleMapLocation).find('.item');
+    this.timeLine = new TimelineLite({paused: true});
+    this.setAnimation();
+  },
+  bindEvents: function() {
+    $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+  },
+  makeAnimationForContactform: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    if(scrolled > $(this.$googleMapLocation).position().top) {
+      this.animation();
+    }
+  },
+  animation: function() {
+    this.timeLine.play();
+  },
+  setAnimation: function() {
+    this.timeLine
+        .from(this.$elem, .8, {autoAlpha: 0,y: -100}, .1)
+  }
+  
+};
