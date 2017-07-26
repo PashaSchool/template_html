@@ -16,7 +16,6 @@ var footerAnimation = {
   footerAnimation: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
     if(scrolled > $(this.$footer).position().top - $(this.$footer).height()) {
-    console.log('works', $(this.$footer).position().top - $(this.$footer).height(), scrolled)
       this.animation();
     }
   },
@@ -25,8 +24,8 @@ var footerAnimation = {
   },
   setAnimation: function() {
     this.timeLine
-        .from(this.$client, .8, {autoAlpha: 0,y: -100})
-        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100})
+        .from(this.$client, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
+        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
   }
   
 };

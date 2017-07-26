@@ -8,10 +8,13 @@ var contactUsForm = {
     this.$inputs = $(this.$formContainer).find('[data-anim-input]');
     this.$icons = $(this.$formContainer).find('[data-anim-icon]');
     this.timeLine = new TimelineLite({paused: true});
-    this.setAnimation();
+    
   },
   bindEvents: function() {
-    $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+    if($(window).width() > 1200) { 
+      this.setAnimation();
+      $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+    }
   },
   makeAnimationForContactform: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -22,6 +25,7 @@ var contactUsForm = {
   animation: function() {
     this.timeLine.play();
   },
+
   setAnimation: function() {
     this.timeLine
         .staggerFrom(this.$inputs, .8, {autoAlpha: 0,y: -100}, .1)

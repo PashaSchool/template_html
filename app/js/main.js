@@ -74,13 +74,16 @@ var aboutStudioAnimation = {
 		this.$item_5 = $(this.$circleContainer).find('.circle-container-about__item:nth-child(5)');
 
 		this.timeLine = new TimelineLite({
-		    paused: true
+		    paused: true,
+		    onComplete: this._deleteALlAttrStyle.bind(this)
 		  });
 
 	},
 	bindEvent: function() {
-		this.animation();
-		$(window).on('scroll', this.animateAboutSection.bind(this))
+	    if($(window).width() > 1200) { 
+			this.animation();
+			$(window).on('scroll', this.animateAboutSection.bind(this))
+		}
 	},
 	animateAboutSection: function() {
 		var scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -88,6 +91,14 @@ var aboutStudioAnimation = {
 			
 			this.timeLine.play()
 		}
+	},
+	_deleteALlAttrStyle: function() {
+		$(this.$circleContainer)
+			.children().each(function(i, el) {
+				if(el.hasAttribute('style')) {
+					$(el).removeAttr('style')
+				}
+			})
 	},
 	animation: function() {
 		this.timeLine
@@ -103,6 +114,76 @@ var aboutStudioAnimation = {
 			.from(this.$item_5, 5, {x: -370, ease: Power2.easeOut}, 'atTheOneTime')
 	}
 }
+var serviceAnimation = {
+  init: function() {
+    this.cacheDom();
+    this.bindEvents();
+  },
+  cacheDom: function() {
+    this.$service = $('#service-section');
+    this.$title = $(this.$service).find('.top-header');
+    this.$circleCont = $(this.$service).find('.circle-container');
+
+    this.$item_1 = $(this.$circleCont).find('.circle-container__item:nth-child(1)');
+    this.$item_2 = $(this.$circleCont).find('.circle-container__item:nth-child(2)');
+    this.$item_3 = $(this.$circleCont).find('.circle-container__item:nth-child(3)');
+    this.$item_4 = $(this.$circleCont).find('.circle-container__item:nth-child(4)');
+    this.$item_5 = $(this.$circleCont).find('.circle-container__item:nth-child(5)');
+    this.$item_6 = $(this.$circleCont).find('.circle-container__item:nth-child(6)');
+
+    this.$c5 = $(this.$service).find('.circle-container__generate-circle-5');
+    this.$c4 = $(this.$service).find('.circle-container__generate-circle-4');
+    this.$c3 = $(this.$service).find('.circle-container__generate-circle-3');
+
+    this.$btn = $(this.$service).find('.btn-wrapper');
+
+    // offset top
+    this.offsetTop = $(this.$service).offset().top;
+    //timeline
+    this.timelineHeader = new TimelineLite({
+      paused: true,
+      onComplete: this._deleteALlAttrStyle.bind(this)
+    });
+
+  },
+  _deleteALlAttrStyle: function() {
+    $(this.$circleCont)
+    .children().each(function(i, el) {
+      if(el.hasAttribute('style')) {
+        $(el).removeAttr('style')
+      }
+    })
+  },
+  bindEvents: function() {
+    if($(window).width() > 1200) {
+      this.animation();
+      $(window).on('scroll', this.checkPosition.bind(this))
+    }
+  },
+  checkPosition: function(){
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+    if(scrolled >= (this.offsetTop * 0.9) ) {
+      this.timelineHeader.play();
+    }
+  },
+  animation: function() {
+    this.timelineHeader
+    .from(this.$title, 1, {autoAlpha: 0, y: -50, ease: Power2.easeOut})
+    .from(this.$c4, 5, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$c3, 4, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$c5, 4, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_1, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_2, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_6, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_3, 5, {autoAlpha: 0, x: -500, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_4, 5, {autoAlpha: 0, x: -450, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$item_5, 5, {autoAlpha: 0, x: -500, ease: Power2.easeOut}, 'atOneTime')
+    .from(this.$btn, 4, {autoAlpha: 0, y: 100, ease: Power2.easeOut}, 'atOneTime')
+
+  }
+}
+
 var contactUsForm = {
   init: function() {
     this.chacheDom();
@@ -113,10 +194,13 @@ var contactUsForm = {
     this.$inputs = $(this.$formContainer).find('[data-anim-input]');
     this.$icons = $(this.$formContainer).find('[data-anim-icon]');
     this.timeLine = new TimelineLite({paused: true});
-    this.setAnimation();
+    
   },
   bindEvents: function() {
-    $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+    if($(window).width() > 1200) { 
+      this.setAnimation();
+      $(window).on('scroll', this.makeAnimationForContactform.bind(this));
+    }
   },
   makeAnimationForContactform: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -127,6 +211,7 @@ var contactUsForm = {
   animation: function() {
     this.timeLine.play();
   },
+
   setAnimation: function() {
     this.timeLine
         .staggerFrom(this.$inputs, .8, {autoAlpha: 0,y: -100}, .1)
@@ -153,7 +238,6 @@ var footerAnimation = {
   footerAnimation: function(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
     if(scrolled > $(this.$footer).position().top - $(this.$footer).height()) {
-    console.log('works', $(this.$footer).position().top - $(this.$footer).height(), scrolled)
       this.animation();
     }
   },
@@ -162,8 +246,8 @@ var footerAnimation = {
   },
   setAnimation: function() {
     this.timeLine
-        .from(this.$client, .8, {autoAlpha: 0,y: -100})
-        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100})
+        .from(this.$client, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
+        .from(this.$logoDescr, .8, {autoAlpha: 0,y: -100}, 'atOneTime')
   }
   
 };
@@ -206,6 +290,112 @@ var headerAnimation = {
   }
 }
 
+var navigationAction = {
+  init: function() {
+    this.chacheDom();
+    this.bindEvents();
+  },
+  chacheDom: function() {
+    this.btn = $('.burger-menu');
+    this.menu = $('.header-line__list');
+    this.windowWidth = $(window).innerWidth();
+    this.newClass = 'toggle-nav-on-mobile';
+  },
+  bindEvents: function() {
+    $(this.btn).on('click', this.addClass.bind(this));
+    $(window).on('resize', this.checkForMobileDevice.bind(this));
+    $(window).on('load', this.checkForMobileDevice.bind(this));
+    $(document).on('scroll', this.navigationFixed.bind(this));
+  },
+  navigationFixed: function(e) {
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    var curentPos = $(window).height() * 1.5;
+    if(scrolled  >= curentPos) {
+      $('nav.navigation').addClass('menu-fixed')
+    }
+    if(scrolled <= curentPos && $('nav.navigation').hasClass('menu-fixed')) {
+      $('nav.navigation').removeClass('menu-fixed')
+    }
+  },
+  checkForMobileDevice: function() {
+    this.windowWidth = $(window).innerWidth();
+    if( $(this.menu).hasClass(this.newClass) && (this.windowWidth >= 979)) {
+      $(this.menu).removeClass(this.newClass);
+    }
+  },
+  addClass: function() {
+    $(this.menu).toggleClass(this.toggleClassCb.bind(this))
+  },
+  toggleClassCb: function() {
+    if(this.windowWidth <= 979) {
+      return this.newClass
+    } else {
+      return
+    }
+  }
+};
+
+
+var el = document.getElementsByClassName('portfolio-list__works');
+// TweenLite.to(el, 1, {scale: .9});
+
+for(var i = 0; i < el.length; i++) {
+
+  el[i].addEventListener('mousemove', function(e){
+      var target = this;
+      var dx = e.offsetX - ($(target).width() / 2);
+      var dy = e.offsetY - ($(target).height() / 2);
+
+      var _x = dx * 0.1;
+      var _y = dy * 0.1;
+
+      TweenLite.to(target, .2, {x: _x, y: _y});
+      TweenLite.to(target, .2, {rotationY: dx/10, rotationX: -dy/10});
+
+    });
+
+  el[i].addEventListener('mouseout', function(e){
+    var target = this;
+    TweenLite.to(target, .2, {scale: 1});
+    TweenLite.to(target, .2, {x: 0, y: 0});
+    TweenLite.to(target, .2, {rotationY: 0, rotationX: 0});
+
+      TweenLite.to($(target).find('.work-container__icon'), .2, {y: 0});
+      TweenLite.to($(target).find('.work-container__underline'), .2, {width: 0});
+      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 0});
+      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 0});
+      TweenLite.from($(target).find('.work-container__description'), .2, {y: 0});
+  });
+
+  el[i].addEventListener('mouseover',  function(e){
+    var target = this;
+      TweenLite.to(target, .2, {scale: 1.1});
+      TweenLite.from($(target).find('.work-container__icon'), .4, {y: 20});
+      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 1});
+      TweenLite.to($(target).find('.work-container__underline'), .5, {width: '100%'});
+      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 1});
+      TweenLite.from($(target).find('.work-container__description'), .2, {y: 40});
+
+    });
+};
+
+
+  var tl = new TimelineLite({
+    paused: true
+  });
+
+  tl
+    .staggerFrom($('.portfolio-list__works:nth-child(odd)'), 1.5, {scale: 0, autoAplha: 0, y: -150}, .25, 'theSameTime')
+    .staggerFrom($('.portfolio-list__works:nth-child(even)'), 1.5, {scale: 0, autoAplha: 0, y: 150}, .25, 'theSameTime');
+
+
+$(window).on('scroll', function() {
+   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+   if(scrolled > $('#portfolio-wrapper').position().top * 0.8) {
+      tl.play();
+   }
+  // console.log(document.querySelector('#portfolio-wrapper').offsetTop, window.pageYOffset)
+})
 function initMap() {
   var option = {
     center: {lat: 49.85, lng: 24.0166666667},
@@ -447,179 +637,3 @@ var googleMapLocation = {
   }
   
 };
-
-
-var el = document.getElementsByClassName('portfolio-list__works');
-// TweenLite.to(el, 1, {scale: .9});
-
-for(var i = 0; i < el.length; i++) {
-
-  el[i].addEventListener('mousemove', function(e){
-      var target = this;
-      var dx = e.offsetX - ($(target).width() / 2);
-      var dy = e.offsetY - ($(target).height() / 2);
-
-      var _x = dx * 0.1;
-      var _y = dy * 0.1;
-
-      TweenLite.to(target, .2, {x: _x, y: _y});
-      TweenLite.to(target, .2, {rotationY: dx/10, rotationX: -dy/10});
-
-    });
-
-  el[i].addEventListener('mouseout', function(e){
-    var target = this;
-    TweenLite.to(target, .2, {scale: 1});
-    TweenLite.to(target, .2, {x: 0, y: 0});
-    TweenLite.to(target, .2, {rotationY: 0, rotationX: 0});
-
-      TweenLite.to($(target).find('.work-container__icon'), .2, {y: 0});
-      TweenLite.to($(target).find('.work-container__underline'), .2, {width: 0});
-      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 0});
-      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 0});
-      TweenLite.from($(target).find('.work-container__description'), .2, {y: 0});
-  });
-
-  el[i].addEventListener('mouseover',  function(e){
-    var target = this;
-      TweenLite.to(target, .2, {scale: 1.1});
-      TweenLite.from($(target).find('.work-container__icon'), .4, {y: 20});
-      TweenLite.to($(target).find('.work-container__icon'), .2, {autoAlpha: 1});
-      TweenLite.to($(target).find('.work-container__underline'), .5, {width: '100%'});
-      TweenLite.to($(target).find('.work-container__description'), .2, {autoAlpha: 1});
-      TweenLite.from($(target).find('.work-container__description'), .2, {y: 40});
-
-    });
-};
-
-
-  var tl = new TimelineLite({
-    paused: true
-  });
-
-  tl
-    .staggerFrom($('.portfolio-list__works:nth-child(odd)'), 1.5, {scale: 0, autoAplha: 0, y: -150}, .25, 'theSameTime')
-    .staggerFrom($('.portfolio-list__works:nth-child(even)'), 1.5, {scale: 0, autoAplha: 0, y: 150}, .25, 'theSameTime');
-
-
-$(window).on('scroll', function() {
-   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-   if(scrolled > $('#portfolio-wrapper').position().top * 0.8) {
-      tl.play();
-   }
-  // console.log(document.querySelector('#portfolio-wrapper').offsetTop, window.pageYOffset)
-})
-var navigationAction = {
-  init: function() {
-    this.chacheDom();
-    this.bindEvents();
-  },
-  chacheDom: function() {
-    this.btn = $('.burger-menu');
-    this.menu = $('.header-line__list');
-    this.windowWidth = $(window).innerWidth();
-    this.newClass = 'toggle-nav-on-mobile';
-  },
-  bindEvents: function() {
-    $(this.btn).on('click', this.addClass.bind(this));
-    $(window).on('resize', this.checkForMobileDevice.bind(this));
-    $(window).on('load', this.checkForMobileDevice.bind(this));
-    $(document).on('scroll', this.navigationFixed.bind(this));
-  },
-  navigationFixed: function(e) {
-    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    var curentPos = $(window).height() * 1.5;
-    if(scrolled  >= curentPos) {
-      $('nav.navigation').addClass('menu-fixed')
-    }
-    if(scrolled <= curentPos && $('nav.navigation').hasClass('menu-fixed')) {
-      $('nav.navigation').removeClass('menu-fixed')
-    }
-  },
-  checkForMobileDevice: function() {
-    this.windowWidth = $(window).innerWidth();
-    if( $(this.menu).hasClass(this.newClass) && (this.windowWidth >= 979)) {
-      $(this.menu).removeClass(this.newClass);
-    }
-  },
-  addClass: function() {
-    $(this.menu).toggleClass(this.toggleClassCb.bind(this))
-  },
-  toggleClassCb: function() {
-    if(this.windowWidth <= 979) {
-      return this.newClass
-    } else {
-      return
-    }
-  }
-};
-
-var serviceAnimation = {
-  init: function() {
-    this.cacheDom();
-    this.bindEvents();
-  },
-  cacheDom: function() {
-    this.$service = $('#service-section');
-    this.$title = $(this.$service).find('.top-header');
-    this.$circleCont = $(this.$service).find('.circle-container');
-
-    this.$item_1 = $(this.$circleCont).find('.circle-container__item:nth-child(1)');
-    this.$item_2 = $(this.$circleCont).find('.circle-container__item:nth-child(2)');
-    this.$item_3 = $(this.$circleCont).find('.circle-container__item:nth-child(3)');
-    this.$item_4 = $(this.$circleCont).find('.circle-container__item:nth-child(4)');
-    this.$item_5 = $(this.$circleCont).find('.circle-container__item:nth-child(5)');
-    this.$item_6 = $(this.$circleCont).find('.circle-container__item:nth-child(6)');
-
-    this.$c5 = $(this.$service).find('.circle-container__generate-circle-5');
-    this.$c4 = $(this.$service).find('.circle-container__generate-circle-4');
-    this.$c3 = $(this.$service).find('.circle-container__generate-circle-3');
-
-    this.$btn = $(this.$service).find('.btn-wrapper');
-
-    // offset top
-    this.offsetTop = $(this.$service).offset().top;
-    //timeline
-    this.timelineHeader = new TimelineLite({
-      paused: true,
-      onComplete: this._deleteALlAttrStyle.bind(this)
-    });
-
-  },
-  _deleteALlAttrStyle: function() {
-    $(this.$circleCont)
-    .children().each(function(i, el) {
-      if(el.hasAttribute('style')) {
-        $(el).removeAttr('style')
-      }
-    })
-  },
-  bindEvents: function() {
-    if($(window).width() > 1200) {
-      this.animation();
-      $(window).on('scroll', this.checkPosition.bind(this))
-    }
-  },
-  checkPosition: function(){
-    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-
-    if(scrolled >= (this.offsetTop * 0.9) ) {
-      this.timelineHeader.play();
-    }
-  },
-  animation: function() {
-    this.timelineHeader
-    .from(this.$title, 1, {autoAlpha: 0, y: -50, ease: Power2.easeOut})
-    .from(this.$c4, 5, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$c3, 4, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$c5, 4, {rotationZ: 360, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$item_1, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$item_2, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$item_6, 5, {autoAlpha: 0, x: 250, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$item_3, 5, {autoAlpha: 0, x: -500, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$item_4, 5, {autoAlpha: 0, x: -450, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$item_5, 5, {autoAlpha: 0, x: -500, ease: Power2.easeOut}, 'atOneTime')
-    .from(this.$btn, 4, {autoAlpha: 0, y: 100, ease: Power2.easeOut}, 'atOneTime')
-
-  }
-}

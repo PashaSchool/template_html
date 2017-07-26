@@ -23,13 +23,16 @@ var aboutStudioAnimation = {
 		this.$item_5 = $(this.$circleContainer).find('.circle-container-about__item:nth-child(5)');
 
 		this.timeLine = new TimelineLite({
-		    paused: true
+		    paused: true,
+		    onComplete: this._deleteALlAttrStyle.bind(this)
 		  });
 
 	},
 	bindEvent: function() {
-		this.animation();
-		$(window).on('scroll', this.animateAboutSection.bind(this))
+	    if($(window).width() > 1200) { 
+			this.animation();
+			$(window).on('scroll', this.animateAboutSection.bind(this))
+		}
 	},
 	animateAboutSection: function() {
 		var scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -37,6 +40,14 @@ var aboutStudioAnimation = {
 			
 			this.timeLine.play()
 		}
+	},
+	_deleteALlAttrStyle: function() {
+		$(this.$circleContainer)
+			.children().each(function(i, el) {
+				if(el.hasAttribute('style')) {
+					$(el).removeAttr('style')
+				}
+			})
 	},
 	animation: function() {
 		this.timeLine
